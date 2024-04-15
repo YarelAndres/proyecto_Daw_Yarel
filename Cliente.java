@@ -1,8 +1,5 @@
 //package EjerciciosProgramacion.PROYECTOFINAL;
 
-
-//ACTUALIZANDO EL MAIN, SUERTUDO MAXI
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;

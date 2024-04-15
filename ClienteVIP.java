@@ -5,7 +5,9 @@ public class ClienteVIP extends Cliente{
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
 
+
     public void aplicarDescuentoVIP() {
+
 
     }
     public void accesoServicioPersonalizado() {
