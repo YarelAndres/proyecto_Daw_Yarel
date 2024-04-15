@@ -48,7 +48,6 @@ public class Tienda {
                             + " con el ID: " + clienteBuscadoPorNombre.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorNombre.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorNombre.getNumTelefono());
-                    sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado ");
                 }}
@@ -111,6 +110,7 @@ public class Tienda {
                         sc.nextLine();
                         clienteactualizado.setDireccion(nuevaDireccion);
                         System.out.println("Dirección actualizada exitosamente");
+                        salir = true;
                     } break;
                     case 2: {
                         System.out.println("Ingresa el nuevo email");
@@ -118,6 +118,7 @@ public class Tienda {
                         sc.nextLine();
                         clienteactualizado.setEmail(nuevoEmail);
                         System.out.println("Email actualizado exitosamente");
+                        salir = true;
                     }break;
                     case 3: {
                         System.out.println("Ingresa el nuevo nombre");
@@ -125,6 +126,7 @@ public class Tienda {
                         sc.nextLine();
                         clienteactualizado.setNombre(nuevoNombre);
                         System.out.println("Nombre actualizado exitosamente");
+                        salir = true;
                     }break;
                     case 4: {
                         System.out.println("Ingresa el nuevo teléfono");
@@ -132,6 +134,7 @@ public class Tienda {
                         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
                         clienteactualizado.setNumTelefono(nuevoTelefono);
                         System.out.println("Teléfono actualizado exitosamente");
+                        salir = true;
                     }break;
                     case 5: {
                         System.out.println("Saliendo del sistema...");
