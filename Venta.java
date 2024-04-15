@@ -1,3 +1,3 @@
 public class Venta {
-//aqui no hay nada
+//aqui no hay nadaa
 }
