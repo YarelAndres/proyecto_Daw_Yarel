@@ -8,7 +8,12 @@ public class ClienteOnline extends Cliente {
     }
 
     public void seguimientoEnvio(){
+        System.out.println("Realizando seguimiento de envío para el cliente: " + this.getNombre());
 
     }
-    public void gestionarDevolucion(){}
+    public void gestionarDevolucion(){
+        System.out.println("Gestionando devolución para el cliente: " + this.getNombre());
+
+
+    }
 }
