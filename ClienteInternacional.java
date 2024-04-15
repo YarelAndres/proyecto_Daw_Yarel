@@ -12,6 +12,6 @@ public class ClienteInternacional extends Cliente {
     }
 
     public void gestionarAduanas() {
-        //Prueba grupal PUSH sadasdasd asd
+
     }
 }
