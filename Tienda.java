@@ -1,11 +1,8 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Tienda {
-    public static void CrearCliente(ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes, Scanner sc) {
+    public static void CrearCliente(ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes,Scanner sc){
         System.out.println("Ingrese el nombre del cliente:");
         sc.nextLine();
         String nombre = sc.nextLine();
@@ -19,11 +16,11 @@ public class Tienda {
 
         LocalDate fechaRegistro = LocalDate.now();//Utiliza la fecha actual y la guarda como fecha de registro
         Cliente nuevoCliente = new Cliente(nombre, direccion, email, fechaRegistro, numTelefono);//Guarda parametros introducidos en el constructor de la clase Cliente
-        GuardarCliente(nuevoCliente, listaClientes, mapaClientes);
+        GuardarCliente(nuevoCliente,listaClientes,mapaClientes);
         System.out.println("Cliente agregado exitosamente.\n");
     }
 
-    public static void GuardarCliente(Cliente cliente, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void GuardarCliente(Cliente cliente,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes) {
         listaClientes.add(cliente);//Guardamos el cliente creado previamente en el Arraylist
         int id;
         Random random = new Random();
@@ -34,16 +31,15 @@ public class Tienda {
         mapaClientes.put(id, cliente); //Vincula el id creado con el objeto cliente creado previamente
     }
 
-    public static void BuscarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void BuscarCliente(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes){
         System.out.println("Seleccione el tipo de busqueda: " +
                 "\n 1. Buscar por nombre" +
                 "\n 2. Buscar por telefono" +
                 "\n 3. Buscar por direccion" +
                 "\n 4. Buscar por ID");
-        int op = sc.nextInt();
-        switch (op) {
-            case 1 -> {
-                System.out.println("Ingresa el nombre del cliente que quieres buscar");
+        int op=sc.nextInt();
+        switch (op){
+            case 1 ->{System.out.println("Ingresa el nombre del cliente que quieres buscar");
                 sc.nextLine();
                 Cliente clienteBuscadoPorNombre = Cliente.buscarClientePorNombre(sc.nextLine(), listaClientes);
                 if (clienteBuscadoPorNombre != null) {
@@ -52,15 +48,11 @@ public class Tienda {
                             + " con el ID: " + clienteBuscadoPorNombre.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorNombre.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorNombre.getNumTelefono());
-                    System.out.println("Fecha de registro: " + clienteBuscadoPorNombre.getFechaRegistro());
-
                 } else {
                     System.out.println("Cliente no encontrado ");
-                }
-            }
-            case 2 -> {
-                System.out.println("Ingresa el número de teléfono del cliente que quieres buscar");
-                Cliente clienteBuscadoPorTelefono = Cliente.buscarClientePorTelefono(sc.nextInt(), listaClientes);
+                }}
+            case 2 ->{System.out.println("Ingresa el número de teléfono del cliente que quieres buscar");
+                Cliente clienteBuscadoPorTelefono = Cliente.buscarClientePorTelefono(sc.nextInt(),listaClientes);
                 if (clienteBuscadoPorTelefono != null) {
                     System.out.println("Cliente encontrado!!");
                     System.out.println("Nombre: " + clienteBuscadoPorTelefono.getNombre()
@@ -68,39 +60,32 @@ public class Tienda {
                     System.out.println("Direccion: " + clienteBuscadoPorTelefono.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorTelefono.getNumTelefono());
                     System.out.println("Correo elecrónico: " + clienteBuscadoPorTelefono.getEmail());
-                    System.out.println("Fecha de registro: " + clienteBuscadoPorTelefono.getFechaRegistro());
-
                     sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado");
-                }
-            }
-            case 3 -> {
-                System.out.println("Ingresa la dirección del cliente que quieres buscar");
+                }}
+            case 3 ->{System.out.println("Ingresa la dirección del cliente que quieres buscar");
                 sc.nextLine();
-                Cliente clienteBuscadoPorDireccion = Cliente.clienteBuscadoPorDireccion(sc.nextLine(), listaClientes, mapaClientes);
+                Cliente clienteBuscadoPorDireccion = Cliente.clienteBuscadoPorDireccion(sc.nextLine(),listaClientes,mapaClientes);
                 if (clienteBuscadoPorDireccion != null) {
                     System.out.println("Cliente encontrado!!");
                     System.out.println("Nombre: " + clienteBuscadoPorDireccion.getNombre()
                             + " con el ID: " + clienteBuscadoPorDireccion.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorDireccion.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorDireccion.getNumTelefono());
-                    System.out.println("Fecha de registro: " + clienteBuscadoPorDireccion.getFechaRegistro());
                     sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado ");
                 }
             }
-            case 4 -> {
-                Cliente.buscarClientePorID(sc, listaClientes, mapaClientes);
+            case 4 ->{
+                Cliente.buscarClientePorID(sc,listaClientes,mapaClientes);
             }
-            default -> {
-                System.out.println("Opcion no valida");
-            }
+            default -> {System.out.println("Opcion no valida");}
         }
     }
 
-    public static void ActualizarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void ActualizarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes){
         System.out.println("Ingrese el ID del cliente a actualizar: ");
         int id = sc.nextInt();
         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
@@ -126,8 +111,7 @@ public class Tienda {
                         clienteactualizado.setDireccion(nuevaDireccion);
                         System.out.println("Dirección actualizada exitosamente");
                         salir = true;
-                    }
-                    break;
+                    } break;
                     case 2: {
                         System.out.println("Ingresa el nuevo email");
                         String nuevoEmail = sc.nextLine();
@@ -135,8 +119,7 @@ public class Tienda {
                         clienteactualizado.setEmail(nuevoEmail);
                         System.out.println("Email actualizado exitosamente");
                         salir = true;
-                    }
-                    break;
+                    }break;
                     case 3: {
                         System.out.println("Ingresa el nuevo nombre");
                         String nuevoNombre = sc.nextLine();
@@ -144,8 +127,7 @@ public class Tienda {
                         clienteactualizado.setNombre(nuevoNombre);
                         System.out.println("Nombre actualizado exitosamente");
                         salir = true;
-                    }
-                    break;
+                    }break;
                     case 4: {
                         System.out.println("Ingresa el nuevo teléfono");
                         int nuevoTelefono = sc.nextInt();
@@ -153,14 +135,12 @@ public class Tienda {
                         clienteactualizado.setNumTelefono(nuevoTelefono);
                         System.out.println("Teléfono actualizado exitosamente");
                         salir = true;
-                    }
-                    break;
+                    }break;
                     case 5: {
                         System.out.println("Saliendo del sistema...");
                         salir = true;
-                    }
-                    break;
-                    default: {
+                    }break;
+                    default :{
                         System.out.println("Opción no válida, por favor seleccione una opción válida.");
                     }
                 }
@@ -185,15 +165,14 @@ public class Tienda {
     }
 
 
-    public static void Pedidos(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void Pedidos(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes){
         System.out.println("Seleccione por preferencia: " +
                 "\n 1. Estado de mi pedido" +
                 "\n 2. Devolver un pedido");
 
     }
-
     // Otros métodos para manejar la lista de clientes
-    public static void GuardarVenta(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaventas, HashMap<Integer, Cliente> mapaClientes,HashMap<Venta,Integer> mapaVentas) {
         Venta venta = new Venta();
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -204,19 +183,19 @@ public class Tienda {
             Random random = new Random();
             do {
                 idVenta = random.nextInt(10000); // Número aleatorio entre 0 y 9999
-            } while (Venta.mapaVentas.containsKey(idVenta));
+            } while (mapaVentas.containsValue(idVenta));
             venta.setIdVenta(idVenta);
-            Venta.mapaVentas.put(idCliente, venta);
+            mapaVentas.put(venta,idCliente);
 
-            System.out.println("Venta guardada con idCliente de: " + cliente.idCliente +
-                    "\nIdVenta de: " + venta.getIdVenta());
+            System.out.println("Venta guardada con idCliente de: "+cliente.idCliente+
+                    "\nIdVenta de: "+venta.getIdVenta());
 
             System.out.println("Ingrese el precio de la venta : ");
             int precioVenta = sc.nextInt();
             sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
             venta.setPrecio(precioVenta);
 
-            venta.listaventas.add(venta);
+            listaventas.add(venta);
             if (venta.getPrecio() < 250) {
                 cliente.setTipoCliente(1); // Cliente regular
             } else {
@@ -236,21 +215,25 @@ public class Tienda {
             System.out.println("Cliente no encongit ptrado");
         }
     }
+    public static void BuscarVentas(Scanner sc, ArrayList<Venta> listaVentas, HashMap<Integer, Cliente> mapaClientes,HashMap<Venta, Integer> mapaVentas) {
+        System.out.println("Ingrese el ID del cliente a buscar: ");
+        int idCliente = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+        Cliente cliente = mapaClientes.get(idCliente);
 
-    public static void GuardarVentaDos(HashMap<Venta, Integer> ventas, Scanner sc, String[]estadoVenta) {
-        int randomIndex = (int) (Math.random() * estadoVenta.length);
-        System.out.println("Estado de la venta: " + estadoVenta[randomIndex]);
-        Venta venta = new Venta();
-        Venta venta1 = new Venta(5, 123, 100, estadoVenta);
-        int x = sc.nextInt();
-        ventas.put(venta1, x);
-
-        for (Venta key : ventas.keySet()) {
-            if (ventas.get(key) == x) {
-                System.out.println("La llave correspondiente a x es: " + key.toString());
+        if (cliente != null) {
+            boolean ventasEncontradas = false;
+            for (Map.Entry<Venta, Integer> entry : mapaVentas.entrySet()) {
+                if (entry.getValue() == idCliente) {
+                    System.out.println(entry.getKey());
+                    ventasEncontradas = true;
+                }
             }
+            if (!ventasEncontradas) {
+                System.out.println("El cliente no tiene ventas registradas.");
+            }
+        } else {
+            System.out.println("Cliente no encontrado");
         }
     }
-
-
 }
