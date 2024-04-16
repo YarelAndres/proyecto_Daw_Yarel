@@ -172,4 +172,47 @@ public class Tienda {
 
     }
     // Otros métodos para manejar la lista de clientes
+    public static void GuardarVenta(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+        Venta venta = new Venta();
+        System.out.println("Ingrese el ID del cliente a buscar: ");
+        int idCliente = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+        Cliente cliente = mapaClientes.get(idCliente);
+        if (cliente != null) {
+            int idVenta;
+            Random random = new Random();
+            do {
+                idVenta = random.nextInt(10000); // Número aleatorio entre 0 y 9999
+            } while (Venta.mapaVentas.containsKey(idVenta));
+            venta.setIdVenta(idVenta);
+            Venta.mapaVentas.put(idCliente,venta);
+
+            System.out.println("Venta guardada con idCliente de: "+cliente.idCliente+
+                    "\nIdVenta de: "+venta.getIdVenta());
+
+            System.out.println("Ingrese el precio de la venta : ");
+            int precioVenta = sc.nextInt();
+            sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+            venta.setPrecio(precioVenta);
+
+            venta.listaventas.add(venta);
+            if (venta.getPrecio() < 250) {
+                cliente.setTipoCliente(1); // Cliente regular
+            } else {
+                cliente.setTipoCliente(3); // Cliente Mayorista
+            }
+            System.out.println(cliente.getTipoCliente());
+
+            if (cliente.getTipoCliente() == 1) {
+                precioVenta = ClienteRegular.VerificarBonificacion(venta);
+                venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
+                System.out.println("Bonificación aplicada exitosamente.\n" +
+                        "El nuevo precio es: " + precioVenta);
+            } else {
+                System.out.println("El precio de la compra es: " + precioVenta);
+            }
+        } else {
+            System.out.println("Cliente no encontrado");
+        }
+    }
 }

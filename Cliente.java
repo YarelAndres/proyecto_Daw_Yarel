@@ -6,6 +6,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Cliente {
@@ -13,9 +14,7 @@ public class Cliente {
     //Creación de las variables de la clase cliente.
     String nombre, direccion, email;
     LocalDate fechaRegistro;
-
-    int idCliente;
-    int numTelefono, ventas;
+    int idCliente,numTelefono,TipoCliente;
 
     //Constructor completo de la clase cliente.
     public Cliente(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
@@ -32,9 +31,7 @@ public class Cliente {
         return nombre;
     }
 
-    public int getIdCliente() {
-        return idCliente;
-    }
+    public int getIdCliente() {return idCliente;}
 
     public int getNumTelefono() {
         return numTelefono;
@@ -52,6 +49,7 @@ public class Cliente {
         return fechaRegistro;
     } //Tipo fecha.
 
+    public int getTipoCliente() {return TipoCliente;}
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -64,19 +62,14 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setVentas(int ventas) {
-        this.ventas = ventas;
-    }
-
 
     public void setNumTelefono(int numTelefono) {
         this.numTelefono = numTelefono;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
+    public void setIdCliente(int idCliente) {this.idCliente = idCliente;}
 
+    public void setTipoCliente(int tipoCliente) {TipoCliente = tipoCliente;}
 
     //Metodo para buscar cliente por su número de teléfono. Le pasamos por parametro el numero de teléfono, el
     //ArrayList que contiene los clientes.
@@ -100,7 +93,6 @@ public class Cliente {
         }
         return null;
     }
-
     public static Cliente clienteBuscadoPorDireccion(String direccion, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getDireccion().equals(direccion)) {
@@ -110,20 +102,19 @@ public class Cliente {
         return null;
     }
 
-    public static void buscarClientePorID(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void buscarClientePorID(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer,Cliente> mapaClientes){
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int id = sc.nextInt();
         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
         Cliente cliente = mapaClientes.get(id);
-        if (cliente != null) {
+        if(cliente !=null){
             System.out.println("Cliente encontrado!!");
             System.out.println("Nombre: " + cliente.getNombre()
                     + " con el ID: " + cliente.getIdCliente());
             System.out.println("Direccion: " + cliente.getDireccion());
             System.out.println("Telefono: " + cliente.getNumTelefono());
             sc.nextLine();
-        } else {
-            System.out.println("Cliente no encontrado");
         }
+        else{System.out.println("Cliente no encontrado");}
     }
 }
