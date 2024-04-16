@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Tienda {
-    public static void CrearCliente(ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes,Scanner sc){
+    public static void CrearCliente(ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes, Scanner sc) {
         System.out.println("Ingrese el nombre del cliente:");
         sc.nextLine();
         String nombre = sc.nextLine();
@@ -16,11 +16,11 @@ public class Tienda {
 
         LocalDate fechaRegistro = LocalDate.now();//Utiliza la fecha actual y la guarda como fecha de registro
         Cliente nuevoCliente = new Cliente(nombre, direccion, email, fechaRegistro, numTelefono);//Guarda parametros introducidos en el constructor de la clase Cliente
-        GuardarCliente(nuevoCliente,listaClientes,mapaClientes);
+        GuardarCliente(nuevoCliente, listaClientes, mapaClientes);
         System.out.println("Cliente agregado exitosamente.\n");
     }
 
-    public static void GuardarCliente(Cliente cliente,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes) {
+    public static void GuardarCliente(Cliente cliente, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         listaClientes.add(cliente);//Guardamos el cliente creado previamente en el Arraylist
         int id;
         Random random = new Random();
@@ -31,15 +31,17 @@ public class Tienda {
         mapaClientes.put(id, cliente); //Vincula el id creado con el objeto cliente creado previamente
     }
 
-    public static void BuscarCliente(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes){
-        System.out.println("Seleccione el tipo de busqueda: " +
-                "\n 1. Buscar por nombre" +
-                "\n 2. Buscar por telefono" +
-                "\n 3. Buscar por direccion" +
-                "\n 4. Buscar por ID");
-        int op=sc.nextInt();
-        switch (op){
-            case 1 ->{System.out.println("Ingresa el nombre del cliente que quieres buscar");
+    public static void BuscarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+        System.out.println("""
+                Seleccione el tipo de busqueda:\s
+                 1. Buscar por nombre
+                 2. Buscar por telefono
+                 3. Buscar por direccion
+                 4. Buscar por ID""");
+        int op = sc.nextInt();
+        switch (op) {
+            case 1 -> {
+                System.out.println("Ingresa el nombre del cliente que quieres buscar");
                 sc.nextLine();
                 Cliente clienteBuscadoPorNombre = Cliente.buscarClientePorNombre(sc.nextLine(), listaClientes);
                 if (clienteBuscadoPorNombre != null) {
@@ -50,9 +52,11 @@ public class Tienda {
                     System.out.println("Telefono: " + clienteBuscadoPorNombre.getNumTelefono());
                 } else {
                     System.out.println("Cliente no encontrado ");
-                }}
-            case 2 ->{System.out.println("Ingresa el número de teléfono del cliente que quieres buscar");
-                Cliente clienteBuscadoPorTelefono = Cliente.buscarClientePorTelefono(sc.nextInt(),listaClientes);
+                }
+            }
+            case 2 -> {
+                System.out.println("Ingresa el número de teléfono del cliente que quieres buscar");
+                Cliente clienteBuscadoPorTelefono = Cliente.buscarClientePorTelefono(sc.nextInt(), listaClientes);
                 if (clienteBuscadoPorTelefono != null) {
                     System.out.println("Cliente encontrado!!");
                     System.out.println("Nombre: " + clienteBuscadoPorTelefono.getNombre()
@@ -63,10 +67,12 @@ public class Tienda {
                     sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado");
-                }}
-            case 3 ->{System.out.println("Ingresa la dirección del cliente que quieres buscar");
+                }
+            }
+            case 3 -> {
+                System.out.println("Ingresa la dirección del cliente que quieres buscar");
                 sc.nextLine();
-                Cliente clienteBuscadoPorDireccion = Cliente.clienteBuscadoPorDireccion(sc.nextLine(),listaClientes,mapaClientes);
+                Cliente clienteBuscadoPorDireccion = Cliente.clienteBuscadoPorDireccion(sc.nextLine(), listaClientes, mapaClientes);
                 if (clienteBuscadoPorDireccion != null) {
                     System.out.println("Cliente encontrado!!");
                     System.out.println("Nombre: " + clienteBuscadoPorDireccion.getNombre()
@@ -78,14 +84,12 @@ public class Tienda {
                     System.out.println("Cliente no encontrado ");
                 }
             }
-            case 4 ->{
-                Cliente.buscarClientePorID(sc,listaClientes,mapaClientes);
-            }
-            default -> {System.out.println("Opcion no valida");}
+            case 4 -> Cliente.buscarClientePorID(sc, listaClientes, mapaClientes);
+            default -> System.out.println("Opcion no valida");
         }
     }
 
-    public static void ActualizarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes){
+    public static void ActualizarCliente(Scanner sc, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("Ingrese el ID del cliente a actualizar: ");
         int id = sc.nextInt();
         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
@@ -104,45 +108,43 @@ public class Tienda {
                 int opcionModificar = sc.nextInt();
                 sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
                 switch (opcionModificar) {
-                    case 1: {
+                    case 1 -> {
                         System.out.println("Ingresa la nueva dirección");
                         String nuevaDireccion = sc.nextLine();
                         sc.nextLine();
                         clienteactualizado.setDireccion(nuevaDireccion);
                         System.out.println("Dirección actualizada exitosamente");
                         salir = true;
-                    } break;
-                    case 2: {
+                    }
+                    case 2 -> {
                         System.out.println("Ingresa el nuevo email");
                         String nuevoEmail = sc.nextLine();
                         sc.nextLine();
                         clienteactualizado.setEmail(nuevoEmail);
                         System.out.println("Email actualizado exitosamente");
                         salir = true;
-                    }break;
-                    case 3: {
+                    }
+                    case 3 -> {
                         System.out.println("Ingresa el nuevo nombre");
                         String nuevoNombre = sc.nextLine();
                         sc.nextLine();
                         clienteactualizado.setNombre(nuevoNombre);
                         System.out.println("Nombre actualizado exitosamente");
                         salir = true;
-                    }break;
-                    case 4: {
+                    }
+                    case 4 -> {
                         System.out.println("Ingresa el nuevo teléfono");
                         int nuevoTelefono = sc.nextInt();
                         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
                         clienteactualizado.setNumTelefono(nuevoTelefono);
                         System.out.println("Teléfono actualizado exitosamente");
                         salir = true;
-                    }break;
-                    case 5: {
+                    }
+                    case 5 -> {
                         System.out.println("Saliendo del sistema...");
                         salir = true;
-                    }break;
-                    default :{
-                        System.out.println("Opción no válida, por favor seleccione una opción válida.");
                     }
+                    default -> System.out.println("Opción no válida, por favor seleccione una opción válida.");
                 }
             }
         } else {
@@ -165,14 +167,8 @@ public class Tienda {
     }
 
 
-    public static void Pedidos(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes){
-        System.out.println("Seleccione por preferencia: " +
-                "\n 1. Estado de mi pedido" +
-                "\n 2. Devolver un pedido");
-
-    }
     // Otros métodos para manejar la lista de clientes
-    public static void GuardarVenta(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaventas, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         Venta venta = new Venta();
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -183,19 +179,19 @@ public class Tienda {
             Random random = new Random();
             do {
                 idVenta = random.nextInt(10000); // Número aleatorio entre 0 y 9999
-            } while (Venta.mapaVentas.containsKey(idVenta));
+            } while (mapaVentas.containsValue(idVenta));
             venta.setIdVenta(idVenta);
-            Venta.mapaVentas.put(idCliente,venta);
+            mapaVentas.put(venta, idCliente);
 
-            System.out.println("Venta guardada con idCliente de: "+cliente.idCliente+
-                    "\nIdVenta de: "+venta.getIdVenta());
+            System.out.println("Venta guardada con idCliente de: " + cliente.idCliente +
+                    "\nIdVenta de: " + venta.getIdVenta());
 
             System.out.println("Ingrese el precio de la venta : ");
             int precioVenta = sc.nextInt();
             sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
             venta.setPrecio(precioVenta);
 
-            venta.listaventas.add(venta);
+            listaventas.add(venta);
             if (venta.getPrecio() < 250) {
                 cliente.setTipocCliente(1); // Cliente regular
             } else {
@@ -210,6 +206,42 @@ public class Tienda {
                         "El nuevo precio es: " + precioVenta);
             } else {
                 System.out.println("El precio de la compra es: " + precioVenta);
+            }
+        } else {
+            System.out.println("Cliente no encontrado");
+        }
+    }
+
+    //    public static void GuardarVentaDos(HashMap<Venta, Integer> ventas, Scanner sc, String[]estadoVenta) {
+//        int randomIndex = (int) (Math.random() * estadoVenta.length);
+//        System.out.println("Estado de la venta: " + estadoVenta[randomIndex]);
+//        Venta venta = new Venta();
+//        Venta venta1 = new Venta(5, 123, 100, estadoVenta);
+//        int x = sc.nextInt();
+//        ventas.put(venta1, x);
+//
+//        for (Venta key : ventas.keySet()) {
+//            if (ventas.get(key) == x) {
+//                System.out.println("La llave correspondiente a x es: " + key.toString());
+//            }
+//        }
+//    }
+    public static void BuscarVentas(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
+        System.out.println("Ingrese el ID del cliente a buscar: ");
+        int idCliente = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+        Cliente cliente = mapaClientes.get(idCliente);
+
+        if (cliente != null) {
+            boolean ventasEncontradas = false;
+            for (Map.Entry<Venta, Integer> entry : mapaVentas.entrySet()) {
+                if (entry.getValue() == idCliente) {
+                    System.out.println(entry.getKey());
+                    ventasEncontradas = true;
+                }
+            }
+            if (!ventasEncontradas) {
+                System.out.println("El cliente no tiene ventas registradas.");
             }
         } else {
             System.out.println("Cliente no encontrado");

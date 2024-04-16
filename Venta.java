@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class Venta {
 
-    int precio,idVenta;
-    public Venta(int idVenta, int precio) {
+    int precio,idVenta,precioEnvio;
+    String estadoVenta;
+    public Venta(int idVenta, int precio, int precioEnvio, String[] estadoVenta) {
         this.idVenta = idVenta;
         this.precio = precio;
+        this.precioEnvio = precioEnvio;
+        this.estadoVenta = Arrays.toString(estadoVenta);
     }
     public Venta() {}
 
@@ -19,24 +22,11 @@ public class Venta {
 
     public void setIdVenta(int idVenta) {this.idVenta = idVenta;}
 
-    final ArrayList<Venta> listaventas = new ArrayList<>();
-    static final HashMap<Integer,Venta> mapaVentas=new HashMap<>();
-
-//    public static void BuscarVentas(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
-//        System.out.println("Ingrese el ID del cliente a buscar: ");
-//        int idCliente = sc.nextInt();
-//        Venta venta = new Venta();
-//        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
-//        Cliente cliente = mapaClientes.get(idCliente);
-//        if (cliente != null) {
-//            for (Venta venta : venta.listaventas) {
-//                if(venta.mapaVentas.get(idCliente)!=null) {
-//                    System.out.println(venta);
-//                }
-//            }
-//        }
-//        else {
-//            System.out.println("El cliente no tiene ventas registradas.");
-//        }
-//    }
+    @Override
+    public String toString() {
+        return "Venta{" +
+                "precio=" + precio +
+                ", idVenta=" + idVenta +
+                '}';
+    }
 }
