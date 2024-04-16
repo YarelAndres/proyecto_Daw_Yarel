@@ -46,7 +46,7 @@ public class Main {
                 }
                 case 7 ->{
                 }
-                case 15 ->{
+                case 8 ->{
                     //Parametro precio ficticio obtenido del grupo libros.
                     double precio = 50.7;
                     ClienteVIP.aplicarDescuentoVIP(precio);
