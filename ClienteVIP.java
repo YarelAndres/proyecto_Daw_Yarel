@@ -26,7 +26,20 @@ public class ClienteVIP extends Cliente{
     }
 
 
-    public static void accesoServicioPersonalizado() {
+     public static void accesoServicioPersonalizado() {
+        // Asesoramiento personalizado
+        System.out.println("Proporcionando acceso a asesoramiento personalizado para el cliente VIP.");
 
+        // Envío prioritario
+        System.out.println("Proporcionando acceso a envío prioritario para el cliente VIP.");
+
+        // Ofertas exclusivas
+        System.out.println("Proporcionando acceso a ofertas exclusivas para el cliente VIP.");
+
+        // Servicio de atención al cliente preferencial
+        System.out.println("Proporcionando acceso a servicio de atención al cliente preferencial para el cliente VIP.");
+
+        // Invitaciones a eventos exclusivos
+        System.out.println("Proporcionando acceso a eventos exclusivos para el cliente VIP.");
     }
 }
