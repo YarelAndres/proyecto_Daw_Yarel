@@ -6,14 +6,8 @@ public class ClienteVIP extends Cliente{
     }
 
     public void aplicarDescuentoVIP() {
-
-
-        //Cambio Yarel
-
+//Cambio MAX
     }
-
-
-
     public void accesoServicioPersonalizado() {
 
     }
