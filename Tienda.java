@@ -163,5 +163,13 @@ public class Tienda {
             System.out.println("Cliente no encontrado.\n");
         }
     }
+
+
+    public static void Pedidos(Scanner sc,ArrayList<Cliente> listaClientes,HashMap<Integer, Cliente> mapaClientes){
+        System.out.println("Seleccione por preferencia: " +
+                "\n 1. Estado de mi pedido" +
+                "\n 2. Devolver un pedido");
+
+    }
     // Otros métodos para manejar la lista de clientes
 }
