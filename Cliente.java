@@ -14,6 +14,9 @@ public class Cliente {
     int idCliente;
     int numTelefono, ventas;
 
+    // atributo del grupo libros.
+    double precio;
+
     //Constructor completo de la clase cliente.
     public Cliente(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         this.nombre = nombre;
@@ -48,6 +51,10 @@ public class Cliente {
     public LocalDate getFechaRegistro() {
         return fechaRegistro;
     } //Tipo fecha.
+
+    public int getVentas(){
+        return ventas;
+    }
 
 
     public void setNombre(String nombre) {

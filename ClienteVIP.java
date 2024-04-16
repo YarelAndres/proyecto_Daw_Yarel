@@ -5,11 +5,15 @@ public class ClienteVIP extends Cliente{
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
 
-
     public void aplicarDescuentoVIP() {
 
 
+        //Cambio Yarel
+
     }
+
+
+
     public void accesoServicioPersonalizado() {
 
     }
