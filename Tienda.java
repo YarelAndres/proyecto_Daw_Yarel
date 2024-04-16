@@ -197,7 +197,7 @@ public class Tienda {
 
             venta.listaventas.add(venta);
             if (venta.getPrecio() < 250) {
-                cliente.setTipoCliente(1); // Cliente regular
+                cliente.setTipocCliente(1); // Cliente regular
             } else {
                 cliente.setTipoCliente(3); // Cliente Mayorista
             }

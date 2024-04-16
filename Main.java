@@ -50,6 +50,7 @@ public class Main {
                     //Parametro precio ficticio obtenido del grupo libros.
                     double precio = 50.7;
                     ClienteVIP.aplicarDescuentoVIP(precio);
+                    ClienteVIP.accesoServicioPersonalizado();
                 }
                 default -> System.out.println("Opcion no valida");
             }
