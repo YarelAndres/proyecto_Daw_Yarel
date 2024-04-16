@@ -38,13 +38,18 @@ public class Main {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 5 -> {
-                    Tienda.Pedidos(sc,listaClientes,mapaClientes);
+                    Tienda.GuardarVenta(sc,listaClientes,mapaClientes);
                 }
                 case 6 -> {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
                 }
                 case 7 ->{
+                }
+                case 8 ->{
+                    //Parametro precio ficticio obtenido del grupo libros.
+                    double precio = 50.7;
+                    ClienteVIP.aplicarDescuentoVIP(precio);
                 }
                 default -> System.out.println("Opcion no valida");
             }
