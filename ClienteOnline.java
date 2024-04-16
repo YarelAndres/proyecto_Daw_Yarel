@@ -46,7 +46,7 @@ public class ClienteOnline extends Cliente {
         } else {
             System.out.println("La devolución ha sido cancelada.");
         }
-        //cambio de maxi
+        //cambio de maxi 6
     }
 }
 
