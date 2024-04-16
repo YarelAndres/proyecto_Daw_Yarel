@@ -233,7 +233,7 @@ public class Tienda {
                 System.out.println("El precio de la compra es: " + precioVenta);
             }
         } else {
-            System.out.println("Cliente no encontrado");
+            System.out.println("Cliente no encongit ptrado");
         }
     }
 
