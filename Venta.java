@@ -22,9 +22,6 @@ public class Venta {
 
     public void setIdVenta(int idVenta) {this.idVenta = idVenta;}
 
-    final ArrayList<Venta> listaventas = new ArrayList<>();
-    static final HashMap<Integer,Venta> mapaVentas=new HashMap<>();
-
     @Override
     public String toString() {
         return "Venta{" +

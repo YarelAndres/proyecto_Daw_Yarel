@@ -9,7 +9,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         final ArrayList<Cliente> listaClientes = new ArrayList<>();
         final HashMap<Integer, Cliente> mapaClientes = new HashMap<>();
-        HashMap<Venta, Integer> ventas = new HashMap<>();
+        HashMap<Venta, Integer> mapaVentas = new HashMap<>();
+        final ArrayList<Venta> listaventas = new ArrayList<>();
         String[] estadoVenta = {"En proceso", "Pendiente de cobro", "Entregado", "Cancelado"};
         Tienda tienda = new Tienda();
 
@@ -39,7 +40,7 @@ public class Main {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 5 -> {
-                    Tienda.GuardarVenta(sc,listaClientes,mapaClientes);
+                    Tienda.GuardarVenta(sc,listaventas,mapaClientes,mapaVentas);
                 }
                 case 6 -> {
                     System.out.println("Saliendo del sistema...");
@@ -49,7 +50,7 @@ public class Main {
                 }
                 case 8 -> {
                     System.out.println("Agrega una compra");
-                    Tienda.GuardarVentaDos(ventas,sc,estadoVenta);
+                    Tienda.BuscarVentas(sc,listaventas,mapaClientes,mapaVentas);
                 }
                 default -> System.out.println("Opcion no valida");
             }
