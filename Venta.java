@@ -22,21 +22,21 @@ public class Venta {
     final ArrayList<Venta> listaventas = new ArrayList<>();
     static final HashMap<Integer,Venta> mapaVentas=new HashMap<>();
 
-    public static void BuscarVentas(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
-        System.out.println("Ingrese el ID del cliente a buscar: ");
-        int idCliente = sc.nextInt();
-        Venta venta = new Venta();
-        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
-        Cliente cliente = mapaClientes.get(idCliente);
-        if (cliente != null) {
-            for (Venta venta : venta.listaventas) {
-                if(venta.mapaVentas.get(idCliente)!=null) {
-                    System.out.println(venta);
-                }
-            }
-        }
-        else {
-            System.out.println("El cliente no tiene ventas registradas.");
-        }
-    }
+//    public static void BuscarVentas(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+//        System.out.println("Ingrese el ID del cliente a buscar: ");
+//        int idCliente = sc.nextInt();
+//        Venta venta = new Venta();
+//        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+//        Cliente cliente = mapaClientes.get(idCliente);
+//        if (cliente != null) {
+//            for (Venta venta : venta.listaventas) {
+//                if(venta.mapaVentas.get(idCliente)!=null) {
+//                    System.out.println(venta);
+//                }
+//            }
+//        }
+//        else {
+//            System.out.println("El cliente no tiene ventas registradas.");
+//        }
+//    }
 }
