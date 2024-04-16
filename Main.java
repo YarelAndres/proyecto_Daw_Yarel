@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -9,7 +8,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         final ArrayList<Cliente> listaClientes = new ArrayList<>();
         final HashMap<Integer, Cliente> mapaClientes = new HashMap<>();
-
+        HashMap<Venta, Integer> mapaVentas = new HashMap<>();
+        final ArrayList<Venta> listaventas = new ArrayList<>();
+        String[] estadoVenta = {"En proceso", "Pendiente de cobro", "Entregado", "Cancelado"};
         Tienda tienda = new Tienda();
 
         boolean salir = false;
@@ -32,13 +33,13 @@ public class Main {
                     Tienda.BuscarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 3 -> {
-                    Tienda.ActualizarCliente(sc,listaClientes,mapaClientes);
+                    Tienda.ActualizarCliente(sc, mapaClientes);
                 }
                 case 4 -> {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 5 -> {
-                    Tienda.GuardarVenta(sc,listaClientes,mapaClientes);
+                    Tienda.GuardarVenta(sc,listaventas,mapaClientes,mapaVentas);
                 }
                 case 6 -> {
                     System.out.println("Saliendo del sistema...");
@@ -46,11 +47,9 @@ public class Main {
                 }
                 case 7 ->{
                 }
-                case 8 ->{
-                    //Parametro precio ficticio obtenido del grupo libros.
-                    double precio = 50.7;
-                    ClienteVIP.aplicarDescuentoVIP(precio);
-                    ClienteVIP.accesoServicioPersonalizado();
+                case 8 -> {
+                    System.out.println("Agrega una compra");
+                    Tienda.BuscarVentas(sc, mapaClientes,mapaVentas);
                 }
                 default -> System.out.println("Opcion no valida");
             }
