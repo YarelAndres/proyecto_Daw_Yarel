@@ -12,7 +12,18 @@ public class Cliente {
     LocalDate fechaRegistro;
 
     int idCliente;
-    int numTelefono, ventas;
+    int numTelefono;
+    int ventas;
+
+    public int getTipoCliente() {
+        return TipoCliente;
+    }
+
+    public void setTipoCliente(int tipoCliente) {
+        TipoCliente = tipoCliente;
+    }
+
+    int TipoCliente;
 
     // atributo del grupo libros.
     double precio;
