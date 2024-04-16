@@ -38,7 +38,7 @@ public class Main {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 5 -> {
-                    Tienda.Pedidos(sc,listaClientes,mapaClientes);
+                    Tienda.GuardarVenta(sc,listaClientes,mapaClientes);
                 }
                 case 6 -> {
                     System.out.println("Saliendo del sistema...");

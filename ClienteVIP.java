@@ -6,7 +6,7 @@ public class ClienteVIP extends Cliente{
     }
 
     public void aplicarDescuentoVIP() {
-
+        //Cambio edson
     }
     public void accesoServicioPersonalizado() {
 
