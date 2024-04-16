@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -34,7 +33,7 @@ public class Main {
                     Tienda.BuscarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 3 -> {
-                    Tienda.ActualizarCliente(sc,listaClientes,mapaClientes);
+                    Tienda.ActualizarCliente(sc, mapaClientes);
                 }
                 case 4 -> {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
@@ -50,7 +49,7 @@ public class Main {
                 }
                 case 8 -> {
                     System.out.println("Agrega una compra");
-                    Tienda.BuscarVentas(sc,listaventas,mapaClientes,mapaVentas);
+                    Tienda.BuscarVentas(sc, mapaClientes,mapaVentas);
                 }
                 default -> System.out.println("Opcion no valida");
             }
