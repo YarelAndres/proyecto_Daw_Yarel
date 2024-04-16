@@ -13,6 +13,9 @@ public class Cliente {
 
     int idCliente;
 
+    int numTelefono;
+    int ventas;
+
     public int getTipoCliente() {
         return TipoCliente;
     }
@@ -22,7 +25,6 @@ public class Cliente {
     }
 
     int TipoCliente;
-    int numTelefono, ventas;
 
     // atributo del grupo libros.
     double precio;
