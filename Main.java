@@ -49,6 +49,11 @@ public class Main {
                 case 7 ->{
                     Tienda.BuscarVentas(sc,listaventas,mapaClientes,mapaVentas);
                 }
+                case 8 ->{
+                    //Parametro precio ficticio obtenido del grupo libros.
+                    double precio = 50.7;
+                    ClienteVIP.aplicarDescuentoVIP(precio);
+                }
                 default -> System.out.println("Opcion no valida");
             }
         }

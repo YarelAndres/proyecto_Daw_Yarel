@@ -12,6 +12,7 @@ public class Cliente {
     LocalDate fechaRegistro;
 
     int idCliente;
+
     int numTelefono;
     int ventas;
 
