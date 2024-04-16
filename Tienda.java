@@ -172,7 +172,7 @@ public class Tienda {
 
     }
     // Otros métodos para manejar la lista de clientes
-    public static void GuardarVenta(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaventas, HashMap<Integer, Cliente> mapaClientes,HashMap<Venta,Integer> mapaVentas) {
         Venta venta = new Venta();
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -183,9 +183,9 @@ public class Tienda {
             Random random = new Random();
             do {
                 idVenta = random.nextInt(10000); // Número aleatorio entre 0 y 9999
-            } while (Venta.mapaVentas.containsKey(idVenta));
+            } while (mapaVentas.containsValue(idVenta));
             venta.setIdVenta(idVenta);
-            Venta.mapaVentas.put(idCliente,venta);
+            mapaVentas.put(venta,idCliente);
 
             System.out.println("Venta guardada con idCliente de: "+cliente.idCliente+
                     "\nIdVenta de: "+venta.getIdVenta());
@@ -195,7 +195,7 @@ public class Tienda {
             sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
             venta.setPrecio(precioVenta);
 
-            venta.listaventas.add(venta);
+            listaventas.add(venta);
             if (venta.getPrecio() < 250) {
                 cliente.setTipoCliente(1); // Cliente regular
             } else {
@@ -210,6 +210,27 @@ public class Tienda {
                         "El nuevo precio es: " + precioVenta);
             } else {
                 System.out.println("El precio de la compra es: " + precioVenta);
+            }
+        } else {
+            System.out.println("Cliente no encontrado");
+        }
+    }
+    public static void BuscarVentas(Scanner sc, ArrayList<Venta> listaVentas, HashMap<Integer, Cliente> mapaClientes,HashMap<Venta, Integer> mapaVentas) {
+        System.out.println("Ingrese el ID del cliente a buscar: ");
+        int idCliente = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
+        Cliente cliente = mapaClientes.get(idCliente);
+
+        if (cliente != null) {
+            boolean ventasEncontradas = false;
+            for (Map.Entry<Venta, Integer> entry : mapaVentas.entrySet()) {
+                if (entry.getValue() == idCliente) {
+                    System.out.println(entry.getKey());
+                    ventasEncontradas = true;
+                }
+            }
+            if (!ventasEncontradas) {
+                System.out.println("El cliente no tiene ventas registradas.");
             }
         } else {
             System.out.println("Cliente no encontrado");
