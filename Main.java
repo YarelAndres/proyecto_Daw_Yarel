@@ -9,7 +9,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         final ArrayList<Cliente> listaClientes = new ArrayList<>();
         final HashMap<Integer, Cliente> mapaClientes = new HashMap<>();
-
+        HashMap<Venta, Integer> ventas = new HashMap<>();
+        String[] estadoVenta = {"En proceso", "Pendiente de cobro", "Entregado", "Cancelado"};
         Tienda tienda = new Tienda();
 
         boolean salir = false;
@@ -45,6 +46,10 @@ public class Main {
                     salir = true;
                 }
                 case 7 ->{
+                }
+                case 8 -> {
+                    System.out.println("Agrega una compra");
+                    Tienda.GuardarVentaDos(ventas,sc,estadoVenta);
                 }
                 default -> System.out.println("Opcion no valida");
             }

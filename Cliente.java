@@ -136,6 +136,7 @@ public class Cliente {
                     + " con el ID: " + cliente.getIdCliente());
             System.out.println("Direccion: " + cliente.getDireccion());
             System.out.println("Telefono: " + cliente.getNumTelefono());
+            System.out.println("Fecha de registro: " + cliente.getFechaRegistro());
             sc.nextLine();
         } else {
             System.out.println("Cliente no encontrado");
