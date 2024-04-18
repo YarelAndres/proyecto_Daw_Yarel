@@ -17,7 +17,7 @@ public class Tienda {
         LocalDate fechaRegistro = LocalDate.now();//Utiliza la fecha actual y la guarda como fecha de registro
         Cliente nuevoCliente = new Cliente(nombre, direccion, email, fechaRegistro, numTelefono);//Guarda parametros introducidos en el constructor de la clase Cliente
         GuardarCliente(nuevoCliente, listaClientes, mapaClientes);
-        System.out.println("Cliente agregado exitosamente.\n");
+        System.out.println("Cliente agregado exitosamente.\n"+"Con el ID: "+nuevoCliente.getIdCliente());
     }
 
     public static void GuardarCliente(Cliente cliente, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
@@ -168,7 +168,7 @@ public class Tienda {
 
 
     // Otros métodos para manejar la lista de clientes
-    public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaventas, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
+    public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaVentas, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         Venta venta = new Venta();
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -190,7 +190,7 @@ public class Tienda {
             int precioVenta = sc.nextInt();
             sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
             venta.setPrecio(precioVenta);
-            listaventas.add(venta);
+            listaVentas.add(venta);
 
             if (venta.getPrecio() < 200) {
                 cliente.setTipoCliente(1); // Cliente regular
@@ -206,12 +206,14 @@ public class Tienda {
                         "El nuevo precio es: " + precioVenta);
 
             } else if (cliente.getTipoCliente() == 3) {
+                System.out.println(precioVenta);
                 precioVenta = ClienteMayorista.VerificarBonificacion(venta);
                 int envio=ClienteMayorista.gestionarPedido(cliente);
                 venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
                 System.out.println("Bonificación de Cliente Mayorista aplicada exitosamente.\n" +
-                        "El nuevo precio es: " + precioVenta+
-                        "El precio de envio es: "+envio);
+                        "El nuevo precio es: " + precioVenta +
+                        "\nEl precio de envio es: "+envio+
+                        "\nDando un total de "+(precioVenta+envio));
             }
         } else {
             System.out.println("Cliente no encontrado");

@@ -33,12 +33,12 @@ public class ClienteMayorista extends Cliente{
     }
     public static int VerificarBonificacion(Venta venta){
         int precioVenta= venta.getPrecio();
-        if(precioVenta<300){
-            precioVenta*= (int) 0.9;//10% de descuento si su compra esta entre 200 y 300
-        } else if(precioVenta<500){
-            precioVenta*= (int) 0.85;//15% de descuento si su compra esta entre 300 y 500
-        }else if (precioVenta<800){
-            precioVenta*= (int) 0.80;//20% de descuento si su compra esta entre 500 y 800
+        if((precioVenta<300)&&(precioVenta>=200)){
+            precioVenta= (int) (precioVenta*0.9);//10% de descuento si su compra esta entre 200 y 300
+        } else if((precioVenta>=300)&(precioVenta<500)){
+            precioVenta= (int) (precioVenta*0.85);//15% de descuento si su compra esta entre 300 y 500
+        }else if ((precioVenta>=500)&(precioVenta<800)){
+            precioVenta= (int) (precioVenta*0.80);//20% de descuento si su compra esta entre 500 y 800
         }
         return precioVenta;
     }
