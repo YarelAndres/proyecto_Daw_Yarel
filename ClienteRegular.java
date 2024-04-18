@@ -8,7 +8,7 @@ public class ClienteRegular extends Cliente{
 
     public static int VerificarBonificacion(Venta venta) {
         int precioVenta= venta.getPrecio();
-        precioVenta*=0.9;
+        precioVenta*=0.95;
         return precioVenta;
     }
 }

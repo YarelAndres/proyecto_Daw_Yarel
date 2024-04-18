@@ -190,10 +190,10 @@ public class Tienda {
             int precioVenta = sc.nextInt();
             sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
             venta.setPrecio(precioVenta);
-
             listaventas.add(venta);
-            if (venta.getPrecio() < 250) {
-                cliente.setTipocCliente(1); // Cliente regular
+
+            if (venta.getPrecio() < 200) {
+                cliente.setTipoCliente(1); // Cliente regular
             } else {
                 cliente.setTipoCliente(3); // Cliente Mayorista
             }
@@ -202,10 +202,16 @@ public class Tienda {
             if (cliente.getTipoCliente() == 1) {
                 precioVenta = ClienteRegular.VerificarBonificacion(venta);
                 venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
-                System.out.println("Bonificación aplicada exitosamente.\n" +
+                System.out.println("Bonificación de Cliente Regular aplicada exitosamente.\n" +
                         "El nuevo precio es: " + precioVenta);
-            } else {
-                System.out.println("El precio de la compra es: " + precioVenta);
+
+            } else if (cliente.getTipoCliente() == 3) {
+                precioVenta = ClienteMayorista.VerificarBonificacion(venta);
+                int envio=ClienteMayorista.gestionarPedido(cliente);
+                venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
+                System.out.println("Bonificación de Cliente Mayorista aplicada exitosamente.\n" +
+                        "El nuevo precio es: " + precioVenta+
+                        "El precio de envio es: "+envio);
             }
         } else {
             System.out.println("Cliente no encontrado");
