@@ -11,10 +11,7 @@ public class Cliente {
     String nombre, direccion, email;
     LocalDate fechaRegistro;
 
-    int idCliente;
-
-    int numTelefono;
-    int ventas;
+    int idCliente, numTelefono, ventas, puntosFidelidad;
 
     public int getTipoCliente() {
         return TipoCliente;
@@ -25,6 +22,14 @@ public class Cliente {
     }
 
     int TipoCliente;
+
+    public int getPuntosFidelidad() {
+        return puntosFidelidad;
+    }
+
+    public void setPuntosFidelidad(int puntosFidelidad) {
+        this.puntosFidelidad = puntosFidelidad;
+    }
 
     // atributo del grupo libros.
     double precio;
@@ -132,12 +137,13 @@ public class Cliente {
         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
         Cliente cliente = mapaClientes.get(id);
         if (cliente != null) {
-            System.out.println("Cliente encontrado!!");
+            System.out.println("¡Cliente encontrado!");
             System.out.println("Nombre: " + cliente.getNombre()
                     + " con el ID: " + cliente.getIdCliente());
             System.out.println("Direccion: " + cliente.getDireccion());
             System.out.println("Telefono: " + cliente.getNumTelefono());
             System.out.println("Fecha de registro: " + cliente.getFechaRegistro());
+            System.out.println("Puntos de fidelidad: " + cliente.getPuntosFidelidad());
             sc.nextLine();
         } else {
             System.out.println("Cliente no encontrado");

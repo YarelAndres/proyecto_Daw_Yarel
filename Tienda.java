@@ -17,7 +17,7 @@ public class Tienda {
         LocalDate fechaRegistro = LocalDate.now();//Utiliza la fecha actual y la guarda como fecha de registro
         Cliente nuevoCliente = new Cliente(nombre, direccion, email, fechaRegistro, numTelefono);//Guarda parametros introducidos en el constructor de la clase Cliente
         GuardarCliente(nuevoCliente, listaClientes, mapaClientes);
-        System.out.println("Cliente agregado exitosamente.\n"+"Con el ID: "+nuevoCliente.getIdCliente());
+        System.out.println("Cliente agregado exitosamente.\n" + "Con el ID: " + nuevoCliente.getIdCliente());
     }
 
     public static void GuardarCliente(Cliente cliente, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
@@ -45,11 +45,13 @@ public class Tienda {
                 sc.nextLine();
                 Cliente clienteBuscadoPorNombre = Cliente.buscarClientePorNombre(sc.nextLine(), listaClientes);
                 if (clienteBuscadoPorNombre != null) {
-                    System.out.println("Cliente encontrado!!");
+                    System.out.println("¡Cliente encontrado!");
                     System.out.println("Nombre: " + clienteBuscadoPorNombre.getNombre()
                             + " con el ID: " + clienteBuscadoPorNombre.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorNombre.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorNombre.getNumTelefono());
+                    System.out.println("Fecha de registro: " + clienteBuscadoPorNombre.getFechaRegistro());
+                    System.out.println("Puntos de fidelidad: " + clienteBuscadoPorNombre.getPuntosFidelidad());
                 } else {
                     System.out.println("Cliente no encontrado ");
                 }
@@ -58,12 +60,14 @@ public class Tienda {
                 System.out.println("Ingresa el número de teléfono del cliente que quieres buscar");
                 Cliente clienteBuscadoPorTelefono = Cliente.buscarClientePorTelefono(sc.nextInt(), listaClientes);
                 if (clienteBuscadoPorTelefono != null) {
-                    System.out.println("Cliente encontrado!!");
+                    System.out.println("¡Cliente encontrado!");
                     System.out.println("Nombre: " + clienteBuscadoPorTelefono.getNombre()
                             + " con el ID: " + clienteBuscadoPorTelefono.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorTelefono.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorTelefono.getNumTelefono());
                     System.out.println("Correo elecrónico: " + clienteBuscadoPorTelefono.getEmail());
+                    System.out.println("Fecha de registro: " + clienteBuscadoPorTelefono.getFechaRegistro());
+                    System.out.println("Puntos de fidelidad: " + clienteBuscadoPorTelefono.getPuntosFidelidad());
                     sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado");
@@ -74,11 +78,13 @@ public class Tienda {
                 sc.nextLine();
                 Cliente clienteBuscadoPorDireccion = Cliente.clienteBuscadoPorDireccion(sc.nextLine(), listaClientes, mapaClientes);
                 if (clienteBuscadoPorDireccion != null) {
-                    System.out.println("Cliente encontrado!!");
+                    System.out.println("¡Cliente encontrado!");
                     System.out.println("Nombre: " + clienteBuscadoPorDireccion.getNombre()
                             + " con el ID: " + clienteBuscadoPorDireccion.getIdCliente());
                     System.out.println("Direccion: " + clienteBuscadoPorDireccion.getDireccion());
                     System.out.println("Telefono: " + clienteBuscadoPorDireccion.getNumTelefono());
+                    System.out.println("Fecha de registro: " + clienteBuscadoPorDireccion.getFechaRegistro());
+                    System.out.println("Puntos de fidelidad: " + clienteBuscadoPorDireccion.getPuntosFidelidad());
                     sc.nextLine();
                 } else {
                     System.out.println("Cliente no encontrado ");
@@ -166,7 +172,6 @@ public class Tienda {
         }
     }
 
-
     // Otros métodos para manejar la lista de clientes
     public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaVentas, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         Venta venta = new Venta();
@@ -192,6 +197,7 @@ public class Tienda {
             venta.setPrecio(precioVenta);
             listaVentas.add(venta);
 
+
             if (venta.getPrecio() < 200) {
                 cliente.setTipoCliente(1); // Cliente regular
             } else {
@@ -204,17 +210,18 @@ public class Tienda {
                 venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
                 System.out.println("Bonificación de Cliente Regular aplicada exitosamente.\n" +
                         "El nuevo precio es: " + precioVenta);
-
+                asignarPuntosFidelidad(cliente, precioVenta); // Asignar puntos de fidelidad al cliente
             } else if (cliente.getTipoCliente() == 3) {
-                System.out.println(precioVenta);
                 precioVenta = ClienteMayorista.VerificarBonificacion(venta);
-                int envio=ClienteMayorista.gestionarPedido(cliente);
+                int envio = ClienteMayorista.gestionarPedido(cliente);
                 venta.setPrecio(precioVenta); // Actualizar el precio de la venta con la bonificación aplicada
                 System.out.println("Bonificación de Cliente Mayorista aplicada exitosamente.\n" +
                         "El nuevo precio es: " + precioVenta +
-                        "\nEl precio de envio es: "+envio+
-                        "\nDando un total de "+(precioVenta+envio));
+                        "\nEl precio de envío es: " + envio +
+                        "\nDando un total de " + (precioVenta + envio));
+                asignarPuntosFidelidad(cliente, precioVenta); // Asignar puntos de fidelidad al cliente
             }
+
         } else {
             System.out.println("Cliente no encontrado");
         }
@@ -254,5 +261,9 @@ public class Tienda {
         } else {
             System.out.println("Cliente no encontrado");
         }
+    }
+
+    public static void asignarPuntosFidelidad(Cliente cliente, int precioVenta) {
+        cliente.setPuntosFidelidad((int) (cliente.getPuntosFidelidad() + (precioVenta * 0.10)));
     }
 }
