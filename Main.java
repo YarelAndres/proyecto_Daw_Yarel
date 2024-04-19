@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -29,24 +28,12 @@ public class Main {
             int opcion = sc.nextInt();
 
             switch (opcion) {
-                case 1 -> {
-                    Tienda.CrearCliente(listaClientes,mapaClientes,sc);
-                }
-                case 2 -> {
-                    Tienda.BuscarCliente(sc,listaClientes,mapaClientes);
-                }
-                case 3 -> {
-                    Tienda.ActualizarCliente(sc,mapaClientes);
-                }
-                case 4 -> {
-                    Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
-                }
-                case 5 -> {
-                    Tienda.GuardarVenta(sc,listaVentas, mapaClientes, mapaVentas);
-                }
-                case 6 ->{
-                    Tienda.BuscarVentas(sc, mapaClientes,mapaVentas);
-                }
+                case 1 -> Tienda.CrearCliente(listaClientes, mapaClientes, sc);
+                case 2 -> Tienda.BuscarCliente(sc,listaClientes,mapaClientes);
+                case 3 -> Tienda.ActualizarCliente(sc,mapaClientes);
+                case 4 -> Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
+                case 5 -> Tienda.GuardarVenta(sc,listaVentas, mapaClientes, mapaVentas);
+                case 6 -> Tienda.BuscarVentas(sc, mapaClientes,mapaVentas);
                 case 25 -> {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
