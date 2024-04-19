@@ -5,10 +5,41 @@ public class ClienteVIP extends Cliente{
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
 
-    public void aplicarDescuentoVIP() {
 
+
+
+    public static void aplicarDescuentoVIP( double precio) {
+
+        // Porcentaje de descuento
+        double porcentajeDescuento = 15.0;
+
+        // Aquí implementamos la lógica para aplicar el descuento. Por ejemplo, podríamos reducir el precio de ciertos
+        // productos con un porcentaje de descuento. Supongamos que el descuento se aplica al monto total de la compra.
+        double precioTotal = precio;
+        double descuento = (porcentajeDescuento / 100.0) * precioTotal;
+        double montoConDescuento = precioTotal - descuento;
+
+        // Imprimimos un mensaje indicando el descuento aplicado.
+        System.out.println("Descuento VIP del " + porcentajeDescuento + "%");
+        System.out.println("Precio total antes del descuento: " + precioTotal + "€");
+        System.out.println("Precio con descuento aplicado: " + montoConDescuento + "€");
     }
-    public void accesoServicioPersonalizado() {
 
+
+    public static void accesoServicioPersonalizado() {
+        // Asesoramiento personalizado
+        System.out.println("Proporcionando acceso a asesoramiento personalizado para el cliente VIP.");
+
+        // Envío prioritario
+        System.out.println("Proporcionando acceso a envío prioritario para el cliente VIP.");
+
+        // Ofertas exclusivas
+        System.out.println("Proporcionando acceso a ofertas exclusivas para el cliente VIP.");
+
+        // Servicio de atención al cliente preferencial
+        System.out.println("Proporcionando acceso a servicio de atención al cliente preferencial para el cliente VIP.");
+
+        // Invitaciones a eventos exclusivos
+        System.out.println("Proporcionando acceso a eventos exclusivos para el cliente VIP.");
     }
 }

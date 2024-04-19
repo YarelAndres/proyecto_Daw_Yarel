@@ -20,7 +20,8 @@ public class Main {
                     2. Para buscar un cliente
                     3. Para actualizar un cliente
                     4. Para eliminar un cliente
-                    5. Para salir.""");
+                    5. Pedidos
+                    6. Para salir.""");
             int opcion = sc.nextInt();
 
             switch (opcion) {
@@ -37,10 +38,19 @@ public class Main {
                     Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 }
                 case 5 -> {
+                    Tienda.GuardarVenta(sc,listaClientes,mapaClientes);
+                }
+                case 6 -> {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
                 }
-                case 6 ->{
+                case 7 ->{
+                }
+                case 8 ->{
+                    //Parametro precio ficticio obtenido del grupo libros.
+                    double precio = 50.7;
+                    ClienteVIP.aplicarDescuentoVIP(precio);
+                    ClienteVIP.accesoServicioPersonalizado();
                 }
                 default -> System.out.println("Opcion no valida");
             }
