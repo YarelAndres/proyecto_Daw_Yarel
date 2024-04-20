@@ -198,7 +198,7 @@ public class Tienda {
                 default:System.out.println("Punto de fidelidad no canjeados");
             }
 
-            CalcularEnvio();
+            CalcularEnvio(sc,venta,cliente);
         } else {
             System.out.println("Cliente no encontrado");
         }
@@ -240,7 +240,40 @@ public class Tienda {
             }
         }
     }
-    public static void CalcularEnvio(){}
+    public static void CalcularEnvio(Scanner sc,Venta venta,Cliente cliente){
+        System.out.println("Indique la region del envio:"+
+                "1)Africa"+
+                "2)America" +
+                "3)España" +
+                "4)Europa" +
+                "5)Oceania" +
+                "6)Asia");
+        switch (sc.nextInt()){
+            case 1 ->{
+                venta.setPrecio(venta.getPrecio()+5);
+                cliente.setTipoCliente(4);
+            }
+            case 2 ->{
+                venta.setPrecio(venta.getPrecio()+4);
+                cliente.setTipoCliente(4);
+            }
+            case 3 ->{
+                venta.setPrecio(venta.getPrecio());
+            }
+            case 4 ->{
+                venta.setPrecio(venta.getPrecio()+2);
+                cliente.setTipoCliente(4);
+            }
+            case 5 ->{
+                venta.setPrecio(venta.getPrecio()+10);
+                cliente.setTipoCliente(4);
+            }
+            case 6 ->{
+                cliente.setTipoCliente(4);
+                venta.setPrecio(venta.getPrecio()+6);
+            }
+        }
+    }
 }
 
 //Método CrearCliente: Este método permite al usuario ingresar los datos de un nuevo cliente, como nombre, dirección, número de teléfono y correo electrónico. Luego crea una instancia de la clase Cliente con estos datos y la agrega tanto a la lista de clientes como al mapa de clientes, asignándole un ID único en el proceso.
