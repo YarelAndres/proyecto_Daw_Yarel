@@ -11,9 +11,6 @@ public class Main {
         final ArrayList<Venta> listaVentas = new ArrayList<>();
         final HashMap<Venta, Integer> mapaVentas = new HashMap<>();
 
-        Venta venta=new Venta();
-        Tienda tienda = new Tienda();
-
         boolean salir = false;
 
         while (!salir) {
@@ -41,7 +38,7 @@ public class Main {
 
                 case 15 ->{
                     //Parametro precio ficticio obtenido del grupo libros.
-                    double precio = 50.7;
+                    int precio = 50;
                     ClienteVIP.aplicarDescuentoVIP(precio);
                     ClienteVIP.accesoServicioPersonalizado();
                 }

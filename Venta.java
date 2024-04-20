@@ -1,15 +1,8 @@
-import java.util.Arrays;
-
 public class Venta {
 
-    int precio,idVenta,precioEnvio;
-    String estadoVenta;
-    public Venta(int idVenta, int precio, int precioEnvio, String[] estadoVenta) {
-        this.idVenta = idVenta;
-        this.precio = precio;
-        this.precioEnvio = precioEnvio;
-        this.estadoVenta = Arrays.toString(estadoVenta);
-    }
+    int precio;
+    int idVenta;
+
     public Venta() {}
 
     public int getPrecio() {return precio;}

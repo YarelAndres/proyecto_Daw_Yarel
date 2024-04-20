@@ -15,13 +15,12 @@ public class ClienteVIP extends Cliente{
 
         // Aquí implementamos la lógica para aplicar el descuento. Por ejemplo, podríamos reducir el precio de ciertos
         // productos con un porcentaje de descuento. Supongamos que el descuento se aplica al monto total de la compra.
-        double precioTotal = precio;
-        double descuento = (porcentajeDescuento / 100.0) * precioTotal;
-        double montoConDescuento = precioTotal - descuento;
+        double descuento = (porcentajeDescuento / 100.0) * precio;
+        double montoConDescuento = precio - descuento;
 
         // Imprimimos un mensaje indicando el descuento aplicado.
         System.out.println("Descuento VIP del " + porcentajeDescuento + "%");
-        System.out.println("Precio total antes del descuento: " + precioTotal + "€");
+        System.out.println("Precio total antes del descuento: " + precio + "€");
         System.out.println("Precio con descuento aplicado: " + montoConDescuento + "€");
     }
 

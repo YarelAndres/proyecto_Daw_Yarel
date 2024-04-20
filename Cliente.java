@@ -11,7 +11,9 @@ public class Cliente {
     String nombre, direccion, email;
     LocalDate fechaRegistro;
 
-    int idCliente, numTelefono, ventas, puntosFidelidad;
+    int idCliente;
+    int numTelefono;
+    int puntosFidelidad;
 
     public int getTipoCliente() {
         return TipoCliente;
@@ -32,8 +34,6 @@ public class Cliente {
     }
 
     // atributo del grupo libros.
-    double precio;
-
     //Constructor completo de la clase cliente.
     public Cliente(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         this.nombre = nombre;
@@ -69,12 +69,7 @@ public class Cliente {
         return fechaRegistro;
     } //Tipo fecha.
 
-    public int getVentas(){
-        return ventas;
-    }
-
-
-    public void setNombre(String nombre) {
+     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -85,10 +80,6 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-    public void setVentas(int ventas) {
-        this.ventas = ventas;
-    }
-
 
     public void setNumTelefono(int numTelefono) {
         this.numTelefono = numTelefono;
@@ -122,7 +113,7 @@ public class Cliente {
         return null;
     }
 
-    public static Cliente clienteBuscadoPorDireccion(String direccion, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static Cliente clienteBuscadoPorDireccion(String direccion, ArrayList<Cliente> listaClientes) {
         for (Cliente cliente : listaClientes) {
             if (cliente.getDireccion().equals(direccion)) {
                 return cliente;
@@ -131,7 +122,7 @@ public class Cliente {
         return null;
     }
 
-    public static void buscarClientePorID(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
+    public static void buscarClientePorID(Scanner sc, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int id = sc.nextInt();
         sc.nextLine(); // Limpiar el buffer del scanner después de leer un entero
