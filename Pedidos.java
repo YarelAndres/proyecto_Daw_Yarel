@@ -2,8 +2,8 @@ import java.time.LocalDate;
 
 public class Pedidos {
     private int idPedido;
-    private LocalDate fechaPedido;
-    private String estado;
+    private final LocalDate fechaPedido;
+    private final String estado;
 
     // Constructor
     public Pedidos(int idPedido, LocalDate fechaPedido, String estado) {

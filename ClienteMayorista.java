@@ -7,30 +7,6 @@ public class ClienteMayorista extends Cliente{
     }
 
 
-    //Variable ficticia de numero de compras hechas por el mayorista.
-    int cant_compra = 17;
-    double precio= 50.3;
-
-    public void calcularDescuentoMayorista(int cant_compra, double precio) {
-        double descuento = 0.0;
-
-        //Descuento al mayorista, cuanto mayor el numero de productos comprados, mayor el descuento.
-        if (cant_compra > 50) {
-            descuento = 0.15; // 15% de descuento si la cantidad de compras es mayor que 50
-        } else if (cant_compra > 30) {
-        descuento = 0.10; // 10% de descuento si la cantidad de compras es mayor que 30
-        } else if(cant_compra > 10) {
-            descuento = 0.5; // 5% de descuento si la cantidad de compras es mayor que 10
-        }else {
-            System.out.println("No ha hecho las compras suficientes para considerarse compra mayorista.");
-        }
-
-        double precio_total= precio*cant_compra;
-        double precio_total_con_descuento= (precio_total*descuento)/100;
-        System.out.println("El precio total de su compra es: " + precio_total + "€");
-        System.out.println("Su descuento por compra mayorista es: " + descuento + "€");
-        System.out.println("El precio total de su compra es: " + precio_total_con_descuento + "€");
-    }
     public static int VerificarBonificacion(Venta venta){
         int precioVenta= venta.getPrecio();
         if((precioVenta<300)&&(precioVenta>=200)){
@@ -53,7 +29,7 @@ public class ClienteMayorista extends Cliente{
         System.out.println("Pedido gestionado exitosamente para el cliente mayorista.");
     }
     public static int gestionarPedido(Cliente cliente){
-        int envio=0;
+        int envio;
         if(cliente.getDireccion().equals("Madrid")){
             envio=3;
         }
