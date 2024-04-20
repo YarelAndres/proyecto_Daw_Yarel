@@ -176,33 +176,29 @@ public class Tienda {
             venta.setPrecio(precioVenta);
             listaVentas.add(venta);
 
+            System.out.println("Indique el tipo de Cliente: " +
+                    "\n1)Regular" +
+                    "\n2)Mayorista" +
+                    "\n3)Online" +
+                    "\n4)Internacional" +
+                    "\n5)VIP");
+            cliente.setTipoCliente(sc.nextInt());
+            Cliente.GuardarPuntosFidelidad(cliente,precioVenta);//Guarda puntos en funcion del precio total de la venta sin descuento
+            Descuento(cliente,venta);
+            System.out.println("El precio de la compra despues de descuentos pasa de "+precioVenta+" a "+venta.getPrecio());
 
-            if (venta.getPrecio() < 200) {
-                cliente.setTipoCliente(1); // Cliente regular
-            } else {
-                cliente.setTipoCliente(3); // Cliente Mayorista
+            System.out.println("¿Desea utilizar sus punto de Fidelidad?" +
+                    "\n1)SI" +
+                    "\n2)NO");
+            switch (sc.nextInt()){
+                case 1:
+                    Cliente.CanjearPuntosFidelidad(cliente,venta);
+                    System.out.println("El nuevo precio de la venta es: "+venta.getPrecio());
+                    break;
+                default:System.out.println("Punto de fidelidad no canjeados");
             }
 
-            if (cliente.getTipoCliente() == 1) {
-                precioVenta = ClienteRegular.VerificarBonificacion(venta);
-                venta.setPrecio(precioVenta);
-                System.out.println("Bonificación de Cliente Regular aplicada exitosamente.\n" +
-                        "El nuevo precio es: " + precioVenta);
-                asignarPuntosFidelidad(cliente, precioVenta);
-                canjearPuntosFidelidad(cliente, listaVentas, mapaVentas);
-            } else if (cliente.getTipoCliente() == 3) {
-                precioVenta = ClienteMayorista.VerificarBonificacion(venta);
-                int envio = ClienteMayorista.gestionarPedido(cliente);
-                venta.setPrecio(precioVenta);
-                System.out.println("Bonificación de Cliente Mayorista aplicada exitosamente.\n" +
-                        "El nuevo precio es: " + precioVenta +
-                        "\nEl precio de envío es: " + envio +
-                        "\nDando un total de " + (precioVenta + envio));
-
-                asignarPuntosFidelidad(cliente, precioVenta);
-                canjearPuntosFidelidad(cliente, listaVentas, mapaVentas);
-            }
-
+            CalcularEnvio();
         } else {
             System.out.println("Cliente no encontrado");
         }
@@ -229,33 +225,22 @@ public class Tienda {
             System.out.println("Cliente no encontrado");
         }
     }
-
-    public static void asignarPuntosFidelidad(Cliente cliente, int precioVenta) {
-        cliente.setPuntosFidelidad((int) (cliente.getPuntosFidelidad() + (precioVenta * 0.10)));
-    }
-
-    public static void canjearPuntosFidelidad(Cliente cliente, ArrayList<Venta> listaVentas, HashMap<Venta, Integer> mapaVentas) {
-        int puntosFidelidad = cliente.getPuntosFidelidad();
-        int puntosCanjeados = puntosFidelidad / 200;
-        int descuento = puntosCanjeados * 10;
-        int puntosRestantes = puntosFidelidad - (puntosCanjeados * 200);
-
-        if (descuento > 0) {
-            System.out.println("Se canjearon " + puntosCanjeados * 200 + " puntos de fidelidad por un descuento de " + descuento + "%");
-            for (Venta venta : listaVentas) {
-                Integer idCliente = mapaVentas.get(venta);
-                if (idCliente != null && idCliente == cliente.getIdCliente()) {
-                    int precioConDescuento = (venta.getPrecio() * (100 - descuento)) / 100;
-                    venta.setPrecio(precioConDescuento);
-                    System.out.println("Descuento aplicado a la venta con ID: " + venta.getIdVenta() + ". Nuevo precio: " + precioConDescuento);
-                }
+    public static void Descuento(Cliente cliente,Venta venta) {
+        switch (cliente.getTipoCliente()){
+            case 1 ->{
+                ClienteRegular.VerificarBonificacionRegular(venta);
             }
-        } else {
-            System.out.println("El cliente no tiene suficientes puntos de fidelidad para canjear.");
+            case 2 ->{
+                ClienteMayorista.VerificarBonificacionMayorista(venta);
+            }
+            case 3 ->{}
+            case 4 ->{}
+            case 5 ->{
+                ClienteVIP.VerificarBonificacionVIP(venta);
+            }
         }
-
-        cliente.setPuntosFidelidad(puntosRestantes);
     }
+    public static void CalcularEnvio(){}
 }
 
 //Método CrearCliente: Este método permite al usuario ingresar los datos de un nuevo cliente, como nombre, dirección, número de teléfono y correo electrónico. Luego crea una instancia de la clase Cliente con estos datos y la agrega tanto a la lista de clientes como al mapa de clientes, asignándole un ID único en el proceso.

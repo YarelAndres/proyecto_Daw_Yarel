@@ -41,4 +41,10 @@ public class ClienteVIP extends Cliente{
         // Invitaciones a eventos exclusivos
         System.out.println("Proporcionando acceso a eventos exclusivos para el cliente VIP.");
     }
+    public static int VerificarBonificacionVIP(Venta venta){
+        int DecuentoVIP =(int )(venta.getPrecio()*0.15);
+        venta.setPrecio(venta.getPrecio()-DecuentoVIP);
+        System.out.println("Descuento VIP aplicado exitosamente");
+        return venta.getPrecio();
+    }
 }

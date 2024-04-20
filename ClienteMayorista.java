@@ -5,20 +5,6 @@ public class ClienteMayorista extends Cliente{
     public ClienteMayorista(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
-
-
-    public static int VerificarBonificacion(Venta venta){
-        int precioVenta= venta.getPrecio();
-        if((precioVenta<300)&&(precioVenta>=200)){
-            precioVenta= (int) (precioVenta*0.9);//10% de descuento si su compra esta entre 200 y 300
-        } else if((precioVenta>=300)&(precioVenta<500)){
-            precioVenta= (int) (precioVenta*0.85);//15% de descuento si su compra esta entre 300 y 500
-        }else if ((precioVenta>=500)&(precioVenta<800)){
-            precioVenta= (int) (precioVenta*0.80);//20% de descuento si su compra esta entre 500 y 800
-        }
-        return precioVenta;
-    }
-
     public void gestionarPedidoMayorista() {
         // Simulando algunas operaciones de gestión de pedidos para un cliente mayorista
         System.out.println("Gestionando pedido para cliente mayorista...");
@@ -40,5 +26,18 @@ public class ClienteMayorista extends Cliente{
             envio=7;
         }
         return envio;
+    }
+    public static int VerificarBonificacionMayorista(Venta venta){
+        int DescuentoMayorista= venta.getPrecio();
+        if((venta.getPrecio()<300)&&(venta.getPrecio()>=200)){
+            DescuentoMayorista= (int) (venta.getPrecio()*0.1);//10% de descuento si su compra esta entre 200 y 300
+        } else if((venta.getPrecio()>=300)&(venta.getPrecio()<500)){
+            DescuentoMayorista= (int) (venta.getPrecio()*0.15);//15% de descuento si su compra esta entre 300 y 500
+        }else if ((venta.getPrecio()>=500)&(venta.getPrecio()<800)){
+            DescuentoMayorista= (int) (venta.getPrecio()*0.2);//20% de descuento si su compra esta entre 500 y 800
+        } else{ DescuentoMayorista=0;}
+        System.out.println("Descuento mayorista aplicado exitosamente.");
+        venta.setPrecio(venta.getPrecio()-DescuentoMayorista);
+        return venta.getPrecio();
     }
 }

@@ -20,4 +20,13 @@ public class Venta {
                 ", idVenta=" + idVenta +
                 '}';
     }
+    public static void GestionarEnvios(Cliente cliente,Venta venta){
+        switch(cliente.getTipoCliente()){
+            case 1 ->{}
+            case 2 ->{}
+            case 3 ->{}
+            case 4 ->{}
+            case 5 ->{}
+        }
+    }
 }

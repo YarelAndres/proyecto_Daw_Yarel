@@ -6,10 +6,10 @@ public class ClienteRegular extends Cliente {
     public ClienteRegular(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
-
-    public static int VerificarBonificacion(Venta venta) {
-        int precioVenta = venta.getPrecio();
-        precioVenta *= 0.95;
-        return precioVenta;
+    public static int VerificarBonificacionRegular(Venta venta) {
+        int DescuentoRegular =(int) (venta.getPrecio()*0.5);
+        venta.setPrecio(venta.getPrecio()-DescuentoRegular);
+        System.out.println("Descuentro de cliente regular aplicado exitosamente.");
+        return venta.getPrecio();
     }
 }

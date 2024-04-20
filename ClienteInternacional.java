@@ -4,8 +4,13 @@ public class ClienteInternacional extends Cliente {
     public ClienteInternacional(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
-
     public void calcularCostoEnvioInternacional() {
+        System.out.println("Indique la region del envio:"+
+                "1)Africa"+
+                "2)America" +
+                "3)Asia" +
+                "4)Europa" +
+                "5)Oceania");
         // Calculamos de costo de envío internacional basado en una tarifa plana
         double tarifaBase = 20.0;       // Tarifa base de envío internacional
         double pesoPaquete = 2.5;       // Peso del paquete en kilogramos

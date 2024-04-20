@@ -69,7 +69,7 @@ public class Cliente {
         return fechaRegistro;
     } //Tipo fecha.
 
-     public void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -139,5 +139,17 @@ public class Cliente {
         } else {
             System.out.println("Cliente no encontrado");
         }
+    }
+    public static void GuardarPuntosFidelidad(Cliente cliente,int precioVenta){
+        cliente.setPuntosFidelidad((int) (cliente.getPuntosFidelidad() + (precioVenta)));
+    }
+    public static void CanjearPuntosFidelidad(Cliente cliente,Venta venta){
+        int PuntosCanjeables=cliente.getPuntosFidelidad();
+        int PuntosNoCanjeados= cliente.getPuntosFidelidad()-PuntosCanjeables;
+        cliente.setPuntosFidelidad(PuntosNoCanjeados);
+        int Descuento=PuntosCanjeables/20;//Si tengo 200 puntos fidelidad se realiza un descuento de 10 euros
+        venta.setPrecio(venta.getPrecio()-Descuento);// ;
+        System.out.println("Cantidad de puntos de fidelidad a canjear :"+PuntosCanjeables+" equivalentes a "+Descuento);
+        System.out.println("Puntos de Fidelidad canjeados exitosamente");
     }
 }
