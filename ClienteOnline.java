@@ -35,13 +35,34 @@ public class ClienteOnline extends Cliente {
     }
 
 
-    private String obtenerEstadoEnvio() {
-        //Creamos un array de String con los posibles estados del envio.
-        String[] estados = {"En tránsito", "En almacén local", "Entregado", "Retenido en aduanas"};
-        //Utilizando Math.random() generamos un numero aleatorio para obtener el estado del envio del producto.
-        //Guardamos el estado del envio en la variable entera estado.
-        int estado = (int) (Math.random() * estados.length);
-        return estados[estado];
+     private static String obtenerEstadoEnvio(Venta venta, Scanner sc) {
+        System.out.println("Ingrese el ID de la venta: ");
+        int id_venta = sc.nextInt();
+        sc.nextLine(); // Limpiar el buffer del scanner
+        //Indicamos la fecha de entrega como la fecha de hoy + 7 dias.
+        LocalDate FechaEntrega= LocalDate.now().plusDays(7);
+        // Verificar si el ID de la venta coincide
+        if (venta.getIdVenta() == id_venta) {
+            LocalDate fecha_actual = LocalDate.now();
+
+            // Comprobar si la fecha actual es posterior a la fecha de registro
+            if (fecha_actual.isBefore(venta.getFechaRegistro())) {
+                LocalDate fecha_entrega_esperada =FechaEntrega;
+
+                // Comparar la fecha actual con la fecha de entrega esperada
+                if (fecha_actual.isBefore(fecha_entrega_esperada)) {
+                    return "Pendiente de entrega";
+                } else if (fecha_actual.equals(fecha_entrega_esperada)) {
+                    return "Entrega esperada hoy";
+                } else {
+                    return "Entregado";
+                }
+            } else {
+                return "Pendiente de registro";
+            }
+        } else {
+            return "ID de venta no encontrado";
+        }
     }
 
 
