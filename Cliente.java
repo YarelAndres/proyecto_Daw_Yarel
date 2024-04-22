@@ -129,8 +129,7 @@ public class Cliente {
         Cliente cliente = mapaClientes.get(id);
         if (cliente != null) {
             System.out.println("¡Cliente encontrado!");
-            System.out.println("Nombre: " + cliente.getNombre()
-                    + " con el ID: " + cliente.getIdCliente());
+            System.out.println("Nombre: " + cliente.getNombre() + " con el ID: " + cliente.getIdCliente());
             System.out.println("Direccion: " + cliente.getDireccion());
             System.out.println("Telefono: " + cliente.getNumTelefono());
             System.out.println("Fecha de registro: " + cliente.getFechaRegistro());
@@ -140,16 +139,20 @@ public class Cliente {
             System.out.println("Cliente no encontrado");
         }
     }
+
+    //Métodos asignarPuntosFidelidad y canjearPuntosFidelidad: Estos métodos se encargan de asignar y canjear puntos de fidelidad a un cliente.
+    // Se calcula el número de puntos a asignar o canjear según el precio de la venta y se actualizan los puntos de fidelidad del cliente en consecuencia.
+    // Además, se aplican descuentos en función de los puntos canjeados.
     public static void GuardarPuntosFidelidad(Cliente cliente,int precioVenta){
-        cliente.setPuntosFidelidad((int) (cliente.getPuntosFidelidad() + (precioVenta)));
+        cliente.setPuntosFidelidad((cliente.getPuntosFidelidad() + (precioVenta)));
     }
     public static void CanjearPuntosFidelidad(Cliente cliente,Venta venta){
         int PuntosCanjeables=cliente.getPuntosFidelidad();
         int PuntosNoCanjeados= cliente.getPuntosFidelidad()-PuntosCanjeables;
         cliente.setPuntosFidelidad(PuntosNoCanjeados);
-        int Descuento=PuntosCanjeables/20;//Si tengo 200 puntos fidelidad se realiza un descuento de 10 euros
-        venta.setPrecio(venta.getPrecio()-Descuento);// ;
-        System.out.println("Cantidad de puntos de fidelidad a canjear :"+PuntosCanjeables+" equivalentes a "+Descuento);
-        System.out.println("Puntos de Fidelidad canjeados exitosamente");
+        int Descuento=PuntosCanjeables/20;//Si tengo 200 puntos fidelidad se realiza un descuento de 5% (10 euros)
+        venta.setPrecio(venta.getPrecio()-Descuento);
+        System.out.println("Cantidad de puntos de fidelidad a canjear :"+PuntosCanjeables+" equivalentes a "+Descuento + " euros");
+        System.out.println("¡Puntos de fidelidad canjeados exitosamente!");
     }
 }
