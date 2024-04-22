@@ -233,7 +233,9 @@ public class Tienda {
             case 2 ->{
                 ClienteMayorista.VerificarBonificacionMayorista(venta);
             }
-            case 3 ->{}
+            case 3 ->{
+                //lo que sea
+            }
             case 4 ->{}
             case 5 ->{
                 ClienteVIP.VerificarBonificacionVIP(venta);
