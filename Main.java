@@ -35,6 +35,7 @@ public class Main {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
                 }
+                case 26 -> ClienteOnline.seguimientoEnvio(sc, mapaClientes,mapaVentas);
 
                 case 15 ->{
                     //Parametro precio ficticio obtenido del grupo libros.

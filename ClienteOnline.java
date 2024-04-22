@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ClienteOnline extends Cliente {
@@ -7,14 +9,31 @@ public class ClienteOnline extends Cliente {
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
 
-    public void seguimientoEnvio() {
-        //Consultamos el estado del envio con el metodo obtenerEstadoEnvio() creado debajo, y lo guardamos en la
-        //variable estadoEnvio.
-        String estadoEnvio = obtenerEstadoEnvio();
 
-        //Imprimimos el estado del envio.
-        System.out.println("Estado del envío: " + estadoEnvio);
+    // Método utilizado para realizar el seguimiento de un envío
+
+    public static void seguimientoEnvio(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
+        System.out.println("Ingrese el ID de la venta a buscar: ");
+        int idVenta = sc.nextInt();
+        sc.nextLine();
+
+        // Buscamos la venta en el mapa de ventas
+        Venta ventaEncontrada = null;
+        for (Map.Entry<Venta, Integer> entry : mapaVentas.entrySet()) {
+            if  (entry.getKey().getIdVenta() == idVenta) {
+                ventaEncontrada = entry.getKey();
+                break;
+            }
+        }
+
+        if (ventaEncontrada != null) {
+            System.out.println("La venta no es null");
+            System.out.println(ventaEncontrada);
+        } else {  // Si la venta no se encuentra, se muestra un mensaje indicándolo
+            System.out.println("Venta no encontrada.");
+        }
     }
+
 
     private String obtenerEstadoEnvio() {
         //Creamos un array de String con los posibles estados del envio.
@@ -26,8 +45,7 @@ public class ClienteOnline extends Cliente {
     }
 
 
-
-    public void gestionarDevolucion(){
+    public void gestionarDevolucion() {
         //Interacción con el cliente para identificar el artículo a devolver.
         System.out.println("Por favor, proporcione el número de seguimiento del artículo a devolver:");
 
