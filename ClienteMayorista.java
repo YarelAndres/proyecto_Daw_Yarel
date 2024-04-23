@@ -5,7 +5,7 @@ public class ClienteMayorista extends Cliente{
     public ClienteMayorista(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
         super(nombre, direccion, email, fechaRegistro, numTelefono);
     }
-    public void gestionarPedidoMayorista() {
+    public static void gestionarPedidoMayorista() {
         // Simulando algunas operaciones de gestión de pedidos para un cliente mayorista
         System.out.println("Gestionando pedido para cliente mayorista...");
         System.out.println("Verificando inventario...");
@@ -13,19 +13,6 @@ public class ClienteMayorista extends Cliente{
         System.out.println("Asignando fecha de entrega preferida...");
         System.out.println("Confirmando pedido con el cliente mayorista...");
         System.out.println("Pedido gestionado exitosamente para el cliente mayorista.");
-    }
-    public static int gestionarPedido(Cliente cliente){
-        int envio;
-        if(cliente.getDireccion().equals("Madrid")){
-            envio=3;
-        }
-        else if(Objects.equals(cliente.getDireccion(), "España")){
-            envio=5;
-        }
-        else {
-            envio=7;
-        }
-        return envio;
     }
     public static int VerificarBonificacionMayorista(Venta venta){
         int DescuentoMayorista= venta.getPrecio();

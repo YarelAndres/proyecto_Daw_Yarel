@@ -28,13 +28,11 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta{" +
-                "precio=" + precio +
-                ", idVenta=" + idVenta +
-                '}';
+        return "ID de venta: " + idVenta + "\n" + "Precio: " + precio;
     }
     public String ventaEncontrada(Venta venta) {
         return "Venta:" + idVenta+
+                "\n"+ "Fecha de registro: " +  FechaRegistro+
                 "\nFecha de envio esperada: " +FechaEntrega;
     }
     public String obtenerEstadoEnvio(Venta venta) {

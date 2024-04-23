@@ -212,7 +212,7 @@ public class Tienda {
         }
     }
 
-    //Método BuscarVentas: Este método permite al usuario buscar todas las ventas asociadas a un cliente específico. Se solicita al usuario que ingrese el ID del cliente y se muestran todas las ventas correspondientes a ese cliente.
+    //Método ObtenertotaldePrecioVentas: Este método permite al usuario buscar todas las ventas asociadas a un cliente específico. Se solicita al usuario que ingrese el ID del cliente y se muestran todas las ventas correspondientes a ese cliente.
     public static void ObtenertotaldePrecioVentas(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -246,6 +246,7 @@ public class Tienda {
             }
             case 2 ->{
                 ClienteMayorista.VerificarBonificacionMayorista(venta);
+                ClienteMayorista.gestionarPedidoMayorista();
             }
             case 3 ->{
                 //lo que sea
@@ -253,17 +254,19 @@ public class Tienda {
             case 4 ->{}
             case 5 ->{
                 ClienteVIP.VerificarBonificacionVIP(venta);
+                ClienteVIP.accesoServicioPersonalizado();
             }
         }
     }
     public static void CalcularEnvio(Scanner sc,Venta venta,Cliente cliente){
-        System.out.println("Indique la region del envio:"+
-                "\n1)Africa"+
-                "\n2)America" +
-                "\n3)España" +
-                "\n4)Europa" +
-                "\n5)Oceania" +
-                "\n6)Asia");
+        System.out.println("""
+                Indique la region del envio:
+                1)Africa
+                2)America
+                3)España
+                4)Europa
+                5)Oceania
+                6)Asia""");
         switch (sc.nextInt()){
             case 1 ->{
                 System.out.println("Envio calculado exitosamente" +

@@ -41,7 +41,6 @@ public class Main {
                 case 15 ->{
                     //Parametro precio ficticio obtenido del grupo libros.
                     int precio = 50;
-                    ClienteVIP.aplicarDescuentoVIP(precio);
                     ClienteVIP.accesoServicioPersonalizado();
                 }
                 default -> System.out.println("Opcion no valida");
