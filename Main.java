@@ -20,7 +20,8 @@ public class Main {
                     3. Para actualizar un cliente
                     4. Para eliminar un cliente
                     5. Para guardar ventas de un cliente
-                    6. Para buscar ventas de un cliente
+                    6. Para calcular el precio total de compras de un cliente
+                    7. Para buscar una venta especifica
                     25. Para salir.""");
             int opcion = sc.nextInt();
 
@@ -30,12 +31,12 @@ public class Main {
                 case 3 -> Tienda.ActualizarCliente(sc,mapaClientes);
                 case 4 -> Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
                 case 5 -> Tienda.GuardarVenta(sc,listaVentas, mapaClientes, mapaVentas);
-                case 6 -> Tienda.BuscarVentas(sc, mapaClientes,mapaVentas);
+                case 6 -> Tienda.ObtenertotaldePrecioVentas(sc, mapaClientes,mapaVentas);
+                case 7 -> ClienteOnline.seguimientoEnvio(sc, mapaClientes,mapaVentas);
                 case 25 -> {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
                 }
-                case 26 -> ClienteOnline.seguimientoEnvio(sc, mapaClientes,mapaVentas);
 
                 case 15 ->{
                     //Parametro precio ficticio obtenido del grupo libros.

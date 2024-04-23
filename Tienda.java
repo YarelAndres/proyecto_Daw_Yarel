@@ -38,10 +38,10 @@ public class Tienda {
     public static void BuscarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("""
                 Seleccione el tipo de busqueda:\s
-                 1. Buscar por nombre
-                 2. Buscar por telefono
-                 3. Buscar por direccion
-                 4. Buscar por ID""");
+                1. Buscar por nombre
+                2. Buscar por telefono
+                3. Buscar por direccion
+                4. Buscar por ID""");
         int op = sc.nextInt();
         sc.nextLine();
         switch (op) {
@@ -199,7 +199,7 @@ public class Tienda {
                     ¿Desea utilizar sus punto de Fidelidad?
                     1)SI
                     2)NO""");
-            if (sc.nextInt() == 1) {
+            if ((sc.nextInt() == 1)&&(cliente.getPuntosFidelidad()>=200)) {
                 Cliente.CanjearPuntosFidelidad(cliente, venta);
                 System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
             } else {
@@ -213,7 +213,7 @@ public class Tienda {
     }
 
     //Método BuscarVentas: Este método permite al usuario buscar todas las ventas asociadas a un cliente específico. Se solicita al usuario que ingrese el ID del cliente y se muestran todas las ventas correspondientes a ese cliente.
-    public static void BuscarVentas(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
+    public static void ObtenertotaldePrecioVentas(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
         sc.nextLine();
@@ -221,12 +221,17 @@ public class Tienda {
 
         if (cliente != null) {
             boolean ventasEncontradas = false;
+            int sumaTotalPrecios = 0;
             for (Map.Entry<Venta, Integer> entry : mapaVentas.entrySet()) {
                 if (entry.getValue() == idCliente) {
-                    System.out.println(entry.getKey());
+                    Venta venta = entry.getKey();
+                    System.out.println(venta);
                     ventasEncontradas = true;
+                    sumaTotalPrecios += venta.getPrecio();
                 }
             }
+            System.out.println("La suma de precios de todas las ventas registradas es: "+sumaTotalPrecios);
+            sc.nextLine();
             if (!ventasEncontradas) {
                 System.out.println("El cliente no tiene ventas registradas.");
             }
@@ -253,35 +258,68 @@ public class Tienda {
     }
     public static void CalcularEnvio(Scanner sc,Venta venta,Cliente cliente){
         System.out.println("Indique la region del envio:"+
-                "1)Africa"+
-                "2)America" +
-                "3)España" +
-                "4)Europa" +
-                "5)Oceania" +
-                "6)Asia");
+                "\n1)Africa"+
+                "\n2)America" +
+                "\n3)España" +
+                "\n4)Europa" +
+                "\n5)Oceania" +
+                "\n6)Asia");
         switch (sc.nextInt()){
             case 1 ->{
+                System.out.println("Envio calculado exitosamente" +
+                        "\nCosto de envio: 5 euros");
                 venta.setPrecio(venta.getPrecio()+5);
+                System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
+                LocalDate FechaEntrega= LocalDate.now().plusDays(3);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
                 cliente.setTipoCliente(4);
             }
             case 2 ->{
+                System.out.println("Envio calculado exitosamente" +
+                        "\nCosto de envio: 4 euros");
                 venta.setPrecio(venta.getPrecio()+4);
+                System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
+                LocalDate FechaEntrega= LocalDate.now().plusDays(4);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
                 cliente.setTipoCliente(4);
             }
             case 3 ->{
+                LocalDate FechaEntrega= LocalDate.now().plusDays(2);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
                 venta.setPrecio(venta.getPrecio());
             }
             case 4 ->{
+                System.out.println("Envio calculado exitosamente" +
+                        "\nCosto de envio: 2 euros");
                 venta.setPrecio(venta.getPrecio()+2);
+                System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
+                LocalDate FechaEntrega= LocalDate.now().plusDays(3);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
                 cliente.setTipoCliente(4);
             }
             case 5 ->{
+                System.out.println("Envio calculado exitosamente" +
+                        "\nCosto de envio: 10 euros");
                 venta.setPrecio(venta.getPrecio()+10);
+                System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
+                LocalDate FechaEntrega= LocalDate.now().plusDays(10);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
                 cliente.setTipoCliente(4);
             }
             case 6 ->{
-                cliente.setTipoCliente(4);
+                System.out.println("Envio calculado exitosamente" +
+                        "\nCosto de envio: 6 euros");
                 venta.setPrecio(venta.getPrecio()+6);
+                System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
+                LocalDate FechaEntrega= LocalDate.now().plusDays(6);
+                venta.setFechaEntrega(FechaEntrega);
+                System.out.println("La fecha de entrega esperada es: "+FechaEntrega);
+                cliente.setTipoCliente(4);
             }
         }
     }

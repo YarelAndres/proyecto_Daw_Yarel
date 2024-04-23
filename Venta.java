@@ -1,9 +1,22 @@
+import java.time.LocalDate;
+import java.util.Scanner;
+
 public class Venta {
 
     int precio;
     int idVenta;
+    LocalDate FechaRegistro;
+    LocalDate FechaEntrega;
+
+    public LocalDate getFechaEntrega() {return FechaEntrega;}
+
+    public void setFechaEntrega(LocalDate fechaEntrega) {FechaEntrega = fechaEntrega;}
 
     public Venta() {}
+
+    public LocalDate getFechaRegistro() {return FechaRegistro;}
+
+    public void setFechaRegistro(LocalDate fechaRegistro) {FechaRegistro = fechaRegistro;}
 
     public int getPrecio() {return precio;}
 
@@ -20,13 +33,26 @@ public class Venta {
                 ", idVenta=" + idVenta +
                 '}';
     }
-    public static void GestionarEnvios(Cliente cliente,Venta venta){
-        switch(cliente.getTipoCliente()){
-            case 1 ->{}
-            case 2 ->{}
-            case 3 ->{}
-            case 4 ->{}
-            case 5 ->{}
+    public String ventaEncontrada(Venta venta) {
+        return "Venta:" + idVenta+
+                "\nFecha de envio esperada: " +FechaEntrega;
+    }
+    public String obtenerEstadoEnvio(Venta venta) {
+        //Indicamos la fecha de entrega como la fecha de hoy + 7 dias.
+        LocalDate fecha_actual = LocalDate.now();
+        // Comprobar si la fecha actual es posterior a la fecha de registro
+        if (fecha_actual.isBefore(venta.getFechaRegistro())) {
+            // Comparar la fecha actual con la fecha de entrega esperada
+            if (fecha_actual.isBefore(venta.getFechaEntrega())) {
+                return "Pendiente de entrega";
+            } else if (fecha_actual.equals(venta.getFechaEntrega())) {
+                    return "Entrega esperada hoy";
+            } else {
+                    return "Entregado";
+            }
+        } else {
+                return "Pendiente de registro";
         }
     }
 }
+
