@@ -3,7 +3,8 @@ import java.util.*;
 
 public class Tienda {
 
-    //Método CrearCliente: Este método permite al usuario ingresar los datos de un nuevo cliente, como nombre, dirección, número de teléfono y correo electrónico. Luego crea una instancia de la clase Cliente con estos datos y la agrega tanto a la lista de clientes como al mapa de clientes, asignándole un ID único en el proceso.
+    //Método CrearCliente: Este método permite al usuario ingresar los datos de un nuevo cliente, como nombre, dirección, número de teléfono y correo electrónico.
+    //Luego crea una instancia de la clase Cliente con estos datos y la agrega tanto a la lista de clientes como al mapa de clientes, asignándole un ID único en el proceso.
     public static void CrearCliente(ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes, Scanner sc) {
         System.out.println("Ingrese el nombre del cliente:");
         String nombre = sc.nextLine();
@@ -22,7 +23,8 @@ public class Tienda {
         System.out.println("Cliente agregado exitosamente.\n" + "Con el ID: " + nuevoCliente.getIdCliente());
     }
 
-    //Método GuardarCliente: Este método recibe un cliente como argumento y lo agrega tanto a la lista de clientes como al mapa de clientes. Además, asigna un ID único al cliente antes de agregarlo al mapa.
+    //Método GuardarCliente: Este método recibe un cliente como argumento y lo agrega tanto a la lista de clientes como al mapa de clientes.
+    //Además, asigna un ID único al cliente antes de agregarlo al mapa.
     public static void GuardarCliente(Cliente cliente, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         listaClientes.add(cliente);
         int id;
@@ -34,7 +36,8 @@ public class Tienda {
         mapaClientes.put(id, cliente);
     }
 
-    //Método BuscarCliente: Este método permite al usuario buscar un cliente por diferentes criterios, como nombre, teléfono, dirección o ID. Dependiendo de la opción elegida por el usuario, se realiza la búsqueda y se muestran los detalles del cliente encontrado utilizando el método imprimirDetallesCliente.
+    //Método BuscarCliente: Este método permite al usuario buscar un cliente por diferentes criterios, como nombre, teléfono, dirección o ID.
+    //Dependiendo de la opción elegida por el usuario, se realiza la búsqueda y se muestran los detalles del cliente encontrado utilizando el método imprimirDetallesCliente.
     public static void BuscarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("""
                 Seleccione el tipo de busqueda:\s
@@ -67,7 +70,8 @@ public class Tienda {
         }
     }
 
-    //Método imprimirDetallesCliente: Este método recibe un objeto Cliente como argumento y muestra sus detalles, como nombre, dirección, teléfono, correo electrónico, fecha de registro y puntos de fidelidad.
+    //Método imprimirDetallesCliente: Este método recibe un objeto Cliente como argumento y muestra sus detalles, como nombre, dirección,
+    //teléfono, correo electrónico, fecha de registro y puntos de fidelidad.
     public static void imprimirDetallesCliente(Cliente cliente) {
         if (cliente != null) {
             System.out.println("¡Cliente encontrado!");
@@ -83,7 +87,7 @@ public class Tienda {
     }
 
     //Método ActualizarCliente: Este método permite al usuario actualizar los datos de un cliente existente, como dirección, correo electrónico, nombre o número de teléfono.
-    // Se solicita al usuario que elija qué dato desea modificar y se realiza la actualización correspondiente en el cliente.
+    //Se solicita al usuario que elija qué dato desea modificar y se realiza la actualización correspondiente en el cliente.
     public static void ActualizarCliente(Scanner sc, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("Ingrese el ID del cliente a actualizar: ");
         int id = sc.nextInt();
