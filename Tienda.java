@@ -82,7 +82,8 @@ public class Tienda {
         }
     }
 
-    //Método ActualizarCliente: Este método permite al usuario actualizar los datos de un cliente existente, como dirección, correo electrónico, nombre o número de teléfono. Se solicita al usuario que elija qué dato desea modificar y se realiza la actualización correspondiente en el cliente.
+    //Método ActualizarCliente: Este método permite al usuario actualizar los datos de un cliente existente, como dirección, correo electrónico, nombre o número de teléfono.
+    // Se solicita al usuario que elija qué dato desea modificar y se realiza la actualización correspondiente en el cliente.
     public static void ActualizarCliente(Scanner sc, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("Ingrese el ID del cliente a actualizar: ");
         int id = sc.nextInt();
@@ -143,7 +144,8 @@ public class Tienda {
         }
     }
 
-    //Método EliminarCliente: Este método permite al usuario eliminar un cliente existente proporcionando su ID. Se elimina el cliente tanto de la lista de clientes como del mapa de clientes.
+    //Método EliminarCliente: Este método permite al usuario eliminar un cliente existente proporcionando su ID.
+    //Se elimina el cliente tanto de la lista de clientes como del mapa de clientes.
     public static void EliminarCliente(Scanner sc, ArrayList<Cliente> listaClientes, HashMap<Integer, Cliente> mapaClientes) {
         System.out.println("Ingrese el ID del cliente a eliminar: ");
         int id = sc.nextInt();
@@ -158,7 +160,8 @@ public class Tienda {
         }
     }
 
-    //Método GuardarVenta: Este método permite al usuario registrar una nueva venta asociada a un cliente existente. Se solicita al usuario que ingrese el ID del cliente y el precio de la venta. Luego se crea una instancia de la clase Venta, se asigna un ID único y se guarda en la lista de ventas. Además, se actualiza el tipo de cliente (regular o mayorista) y se aplican bonificaciones y descuentos según corresponda.
+    //Método GuardarVenta: Este método permite al usuario registrar una nueva venta asociada a un cliente existente.
+    //Se solicita al usuario que ingrese el ID del cliente y el precio de la venta. Luego se crea una instancia de la clase Venta, se asigna un ID único y se guarda en la lista de ventas. Además, se actualiza el tipo de cliente (regular o mayorista) y se aplican bonificaciones y descuentos según corresponda.
     public static void GuardarVenta(Scanner sc, ArrayList<Venta> listaVentas, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         Venta venta = new Venta();
         System.out.println("Ingrese el ID del cliente a buscar: ");
@@ -185,11 +188,11 @@ public class Tienda {
 
             System.out.println("""
                     Indique el tipo de Cliente:\s
-                    1)Regular
-                    2)Mayorista
-                    3)Online
-                    4)Internacional
-                    5)VIP""");
+                    1. Regular
+                    2. Mayorista
+                    3. Online
+                    4. Internacional
+                    5. VIP""");
             cliente.setTipoCliente(sc.nextInt());
             Cliente.GuardarPuntosFidelidad(cliente,precioVenta);//Guarda puntos en funcion del precio total de la venta sin descuento
             Descuento(cliente,venta);
@@ -197,8 +200,8 @@ public class Tienda {
 
             System.out.println("""
                     ¿Desea utilizar sus punto de Fidelidad?
-                    1)SI
-                    2)NO""");
+                    1. Sí
+                    2. No""");
             if ((sc.nextInt() == 1)&&(cliente.getPuntosFidelidad()>=200)) {
                 Cliente.CanjearPuntosFidelidad(cliente, venta);
                 System.out.println("El nuevo precio de la venta es: " + venta.getPrecio());
@@ -212,7 +215,8 @@ public class Tienda {
         }
     }
 
-    //Método ObtenertotaldePrecioVentas: Este método permite al usuario buscar todas las ventas asociadas a un cliente específico. Se solicita al usuario que ingrese el ID del cliente y se muestran todas las ventas correspondientes a ese cliente.
+    //Método ObtenertotaldePrecioVentas: Este método permite al usuario buscar todas las ventas asociadas a un cliente específico.
+    //Se solicita al usuario que ingrese el ID del cliente y se muestran todas las ventas correspondientes a ese cliente.
     public static void ObtenertotaldePrecioVentas(Scanner sc, HashMap<Integer, Cliente> mapaClientes, HashMap<Venta, Integer> mapaVentas) {
         System.out.println("Ingrese el ID del cliente a buscar: ");
         int idCliente = sc.nextInt();
@@ -239,6 +243,10 @@ public class Tienda {
             System.out.println("Cliente no encontrado");
         }
     }
+
+    //Este método Descuento recibe un objeto Cliente y un objeto Venta como parámetros.
+    //Luego, utiliza un switch para verificar el tipo de cliente que se está pasando como parámetro.
+    //Dependiendo del tipo de cliente, se ejecutarán diferentes acciones
     public static void Descuento(Cliente cliente,Venta venta) {
         switch (cliente.getTipoCliente()){
             case 1 ->{
@@ -258,15 +266,18 @@ public class Tienda {
             }
         }
     }
+
+    //Este método permite al usuario seleccionar la región de envío, calcula el costo de envío, actualiza el precio de la venta, establece la fecha de entrega
+    //esperada y modifica el tipo de cliente en función de la región seleccionada.
     public static void CalcularEnvio(Scanner sc,Venta venta,Cliente cliente){
         System.out.println("""
                 Indique la region del envio:
-                1)Africa
-                2)America
-                3)España
-                4)Europa
-                5)Oceania
-                6)Asia""");
+                1. Africa
+                2. America
+                3. España
+                4. Europa
+                5. Oceania
+                6. Asia""");
         switch (sc.nextInt()){
             case 1 ->{
                 System.out.println("Envio calculado exitosamente" +
@@ -327,4 +338,3 @@ public class Tienda {
         }
     }
 }
-
