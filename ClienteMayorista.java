@@ -1,8 +1,5 @@
-import java.time.LocalDate;
-import java.util.Objects;
-
 public class ClienteMayorista extends Cliente{
-    public ClienteMayorista(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
+    public ClienteMayorista(String nombre, String direccion, String email, int numTelefono) {
         super(nombre, direccion, email, numTelefono);
     }
     public static void gestionarPedidoMayorista() {

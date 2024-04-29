@@ -256,9 +256,7 @@ public class Tienda {
     //Dependiendo del tipo de cliente, se ejecutarán diferentes acciones
     public static void Descuento(Cliente cliente,Venta venta) {
         switch (cliente.getTipoCliente()){
-            case 1 ->{
-                ClienteRegular.VerificarBonificacionRegular(venta);
-            }
+            case 1 -> ClienteRegular.VerificarBonificacionRegular(venta);
             case 2 ->{
                 ClienteMayorista.VerificarBonificacionMayorista(venta);
                 ClienteMayorista.gestionarPedidoMayorista();

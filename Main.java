@@ -22,26 +22,20 @@ public class Main {
                     5. Para guardar ventas de un cliente
                     6. Para calcular el precio total de compras de un cliente
                     7. Para buscar una venta especifica
-                    25. Para salir.""");
+                    8. SALIR""");
             int opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1 -> Tienda.CrearCliente(listaClientes, mapaClientes, sc);
-                case 2 -> Tienda.BuscarCliente(sc,listaClientes,mapaClientes);
-                case 3 -> Tienda.ActualizarCliente(sc,mapaClientes);
-                case 4 -> Tienda.EliminarCliente(sc,listaClientes,mapaClientes);
-                case 5 -> Tienda.GuardarVenta(sc,listaVentas, mapaClientes, mapaVentas);
-                case 6 -> Tienda.ObtenertotaldePrecioVentas(sc, mapaClientes,mapaVentas);
-                case 7 -> ClienteOnline.seguimientoEnvio(sc, mapaClientes,mapaVentas);
-                case 25 -> {
+                case 2 -> Tienda.BuscarCliente(sc, listaClientes, mapaClientes);
+                case 3 -> Tienda.ActualizarCliente(sc, mapaClientes);
+                case 4 -> Tienda.EliminarCliente(sc, listaClientes, mapaClientes);
+                case 5 -> Tienda.GuardarVenta(sc, listaVentas, mapaClientes, mapaVentas);
+                case 6 -> Tienda.ObtenertotaldePrecioVentas(sc, mapaClientes, mapaVentas);
+                case 7 -> ClienteOnline.seguimientoEnvio(sc, mapaClientes, mapaVentas);
+                case 8 -> {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
-                }
-
-                case 15 ->{
-                    //Parametro precio ficticio obtenido del grupo libros.
-                    int precio = 50;
-                    ClienteVIP.accesoServicioPersonalizado();
                 }
                 default -> System.out.println("Opcion no valida");
             }

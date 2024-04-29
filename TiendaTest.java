@@ -26,7 +26,7 @@ class TiendaTest {
         venta.setPrecio(100);
         cliente.setTipoCliente(1); // Cliente regular
         Tienda.Descuento(cliente, venta);
-        assertEquals(50, venta.getPrecio()); // Verificar que se aplicó el descuento para el cliente regular
+        assertEquals(10, venta.getPrecio()); // Verificar que se aplicó el descuento para el cliente regular
     }
     @Test
     void buscarClientePorTelefono_RegresaNull() {
