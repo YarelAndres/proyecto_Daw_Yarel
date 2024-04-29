@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class ClienteOnline extends Cliente {
 
     public ClienteOnline(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
-        super(nombre, direccion, email, fechaRegistro, numTelefono);
+        super(nombre, direccion, email, numTelefono);
     }
 
 

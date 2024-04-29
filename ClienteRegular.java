@@ -4,7 +4,7 @@ public class ClienteRegular extends Cliente {
     int tipoCliente = 1;
 
     public ClienteRegular(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
-        super(nombre, direccion, email, fechaRegistro, numTelefono);
+        super(nombre, direccion, email, numTelefono);
     }
     public static int VerificarBonificacionRegular(Venta venta) {
         int DescuentoRegular =(int) (venta.getPrecio()*0.5);

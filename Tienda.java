@@ -18,7 +18,8 @@ public class Tienda {
         String email = sc.nextLine();
 
         LocalDate fechaRegistro = LocalDate.now();
-        Cliente nuevoCliente = new Cliente(nombre, direccion, email, fechaRegistro, numTelefono);
+        Cliente nuevoCliente = new Cliente(nombre, direccion, email, numTelefono);
+        nuevoCliente.setFechaRegistro(fechaRegistro);
         GuardarCliente(nuevoCliente, listaClientes, mapaClientes);
         System.out.println("Cliente agregado exitosamente.\n" + "Con el ID: " + nuevoCliente.getIdCliente());
     }
@@ -180,6 +181,7 @@ public class Tienda {
             } while (mapaVentas.containsValue(idVenta));
             venta.setIdVenta(idVenta);
             mapaVentas.put(venta, idCliente);
+            LocalDate fechaRegistro = LocalDate.now();
 
             System.out.println("Venta guardada con idCliente de: " + cliente.getIdCliente() +
                     "\nIdVenta de: " + venta.getIdVenta());
@@ -188,6 +190,7 @@ public class Tienda {
             int precioVenta = sc.nextInt();
             sc.nextLine();
             venta.setPrecio(precioVenta);
+            venta.setFechaRegistro(fechaRegistro);
             listaVentas.add(venta);
 
             System.out.println("""

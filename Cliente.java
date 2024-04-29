@@ -35,11 +35,10 @@ public class Cliente {
 
     // atributo del grupo libros.
     //Constructor completo de la clase cliente.
-    public Cliente(String nombre, String direccion, String email, LocalDate fechaRegistro, int numTelefono) {
+    public Cliente(String nombre, String direccion, String email, int numTelefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.email = email;
-        this.fechaRegistro = fechaRegistro;
         this.numTelefono = numTelefono;
     }
 
@@ -68,6 +67,9 @@ public class Cliente {
     public LocalDate getFechaRegistro() {
         return fechaRegistro;
     } //Tipo fecha.
+    public LocalDate setFechaRegistro(LocalDate fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
