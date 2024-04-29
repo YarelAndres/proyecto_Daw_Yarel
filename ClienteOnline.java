@@ -37,7 +37,7 @@ public class ClienteOnline extends Cliente {
                 System.out.println(ventaEncontrada.obtenerEstadoEnvio(ventaEncontrada));
             }
             if (x == 2) {
-                System.out.println("Cancelando el envío...");
+                System.out.println("Cancelando el envío.");
                 GestionarDevolucion(ventaEncontrada);
             }
         } else {  // Si la venta no se encuentra, se muestra un mensaje indicándolo
@@ -46,7 +46,6 @@ public class ClienteOnline extends Cliente {
     }
 
     public static void GestionarDevolucion(Venta ventaEncontrada) {
-        System.out.println("Cancelando el envío...");
         ventaEncontrada.setPrecio(0);
         ventaEncontrada.setFechaEntrega(null);
         System.out.println("Se ha devuelto el importe completo de la compra.");

@@ -11,7 +11,7 @@ class TiendaTest {
     public void testGuardarCliente() {
         ArrayList<Cliente> listaClientes = new ArrayList<>();
         HashMap<Integer, Cliente> mapaClientes = new HashMap<>();
-        Cliente cliente = new Cliente("Cliente1", "Dirección1", "cliente1@gmail.com", LocalDate.now(), 123456789);
+        Cliente cliente = new Cliente("Cliente1", "Dirección1", "cliente1@gmail.com", 123456789);
 
         Tienda.GuardarCliente(cliente, listaClientes, mapaClientes);
 
@@ -21,7 +21,7 @@ class TiendaTest {
 
     @Test //Si da error (funciona)
     public void testDescuento() {
-        Cliente cliente = new Cliente("Cliente1", "Dirección1", "cliente1@gmail.com", LocalDate.now(), 123456789);
+        Cliente cliente = new Cliente("Cliente1", "Dirección1", "cliente1@gmail.com", 123456789);
         Venta venta = new Venta();
         venta.setPrecio(100);
         cliente.setTipoCliente(1); // Cliente regular
@@ -64,7 +64,7 @@ class TiendaTest {
     }
     @Test
     void guardarPuntosFidelidad_ComparaPuntosFidelidad() {
-        Cliente cliente = new Cliente("Pablo", "Calle 456", "pablo@gmail.com", LocalDate.now(), 987654321);
+        Cliente cliente = new Cliente("Pablo", "Calle 456", "pablo@gmail.com", 987654321);
         Cliente.GuardarPuntosFidelidad(cliente, 100); //Asigna ciertos puntos de fidelidad
         assertEquals(100, cliente.getPuntosFidelidad());
     }
