@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class ClienteVIP extends Cliente{
     public ClienteVIP(String nombre, String direccion, String email, int numTelefono) {
         super(nombre, direccion, email, numTelefono);
