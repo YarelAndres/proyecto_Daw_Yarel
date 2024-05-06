@@ -24,4 +24,5 @@ public class ClienteVIP extends Cliente{
         System.out.println("Descuento VIP aplicado exitosamente");
         return venta.getPrecio();
     }
+
 }
